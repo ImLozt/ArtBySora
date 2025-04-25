@@ -330,43 +330,51 @@
   }
   
   @media (max-width: 768px) {
-    .gallery {
-      grid-template-columns: repeat(2, 1fr); /* 2 sloupce */
-      gap: 20px;
-      padding: 0 10px;
-    }
-  
-    .card {
-      max-width: 100%;
-      margin: 0 auto;
-    }
-  
-    .gallery img {
-      height: 300px; /* aby obrázky nebyly moc vysoké na mobilech */
-      width: 300px;
-      justify-content: center;
-    }
-  
-    .card p {
-      font-size: 1.2em;
-      padding: 6px;
-    }
+  .gallery img {
+    height: 300px;
   }
-  
-  @media (max-width: 480px) {
-    .gallery {
-      grid-template-columns: 1fr; /* Na velmi malých mobilech pod sebe */
-      gap: 15px;
-    }
-  
-    .gallery img {
-      height: 250px;
-    }
-  
-    .card p {
-      font-size: 1em;
-    }
+
+  .card p {
+    font-size: 1.1em;
+    padding: 6px;
   }
+
+  .card p::after {
+    font-size: 1.4em;
+  }
+}
+
+/* 📱📱 Úzké telefony (do 500px) */
+@media (max-width: 500px) {
+  .gallery img {
+    height: 220px;
+  }
+
+  .card p {
+    font-size: 1em;
+    padding: 5px;
+  }
+
+  .card p::after {
+    font-size: 1.2em;
+  }
+}
+
+/* 📱📱📱 Extra malé displeje (např. starší iPhony) */
+@media (max-width: 360px) {
+  .gallery img {
+    height: 180px;
+  }
+
+  .card p {
+    font-size: 0.9em;
+    padding: 4px;
+  }
+
+  .card p::after {
+    font-size: 1em;
+  }
+}
 
   .fullscreen-overlay {
     position: fixed;
