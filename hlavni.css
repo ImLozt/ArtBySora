@@ -337,6 +337,8 @@ nav a:hover::before {
 
   .gallery img {
     height: 300px; /* aby obrázky nebyly moc vysoké na mobilech */
+    width: 300px;
+    justify-content: center;
   }
 
   .card p {
