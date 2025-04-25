@@ -22,7 +22,7 @@ body {
   font-family: 'Montserrat', sans-serif;
   color: white;
   line-height: 1.6;
-  background-image: url('../obrazky/pozadiwebu2.webp');
+  background-image: url('./obrazky/pozadiwebu2.webp');
   background-size: contain;
 }
 
