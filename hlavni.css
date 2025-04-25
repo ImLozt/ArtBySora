@@ -217,6 +217,16 @@ nav a:hover::before {
   font-size: 1.5em;
 }
 
+@media (max-width: 768px) {
+  .section p {
+    font-size: 1em;
+  }
+
+  .section h2 {
+    font-size: 3em;
+  }
+}
+
 /* --- efektní najíždění obrázků --- */
 .lazy{
   opacity:0;
