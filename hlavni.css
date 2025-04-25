@@ -619,6 +619,41 @@ footer p {
   transform: rotateY(180deg);
   font-size: 0.8rem;
 }
+
+@media (max-width: 600px) {
+  footer {
+    padding: 20px 10px;
+  }
+
+  footer h2.footer-title {
+    font-size: 1.6em;
+  }
+
+  footer p {
+    font-size: 1em;
+  }
+
+  .social-links {
+    gap: 20px;
+    flex-wrap: nowrap;
+    max-width: 90%;
+  }
+
+  .social-box {
+    width: 22vw;
+    min-width: 50px;
+  }
+
+  .social-box .back {
+    font-size: 0.6rem;
+  }
+
+  .social-box .front img {
+    max-width: 50%;
+    max-height: 50%;
+  }
+}
+
 .kontakt-section {
   background: linear-gradient(to bottom, #350833, #23043d);
   color: white;
