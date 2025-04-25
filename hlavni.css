@@ -559,19 +559,20 @@ footer p {
 
 .social-links {
   display: flex;
+  flex-wrap: wrap; /* <<< přidat */
   justify-content: center;
-  gap: 40px;
+  gap: 20px;
   margin: 20px auto;
-  width: 90%;       
-  max-width: 600px;  
+  width: 90%;
+  max-width: 600px;
+  overflow: hidden; /* <<< přidat pro jistotu */
 }
 
 .social-box {
-  flex: 1 1 auto;
-  width: 10vw;       
-  max-width: 100px;  
-  min-width: 60px;   
-  aspect-ratio: 1;   
+  flex: 1 1 80px; /* <<< změněno pro menší základ */
+  max-width: 100px;
+  min-width: 60px;
+  aspect-ratio: 1;
   perspective: 600px;
   text-decoration: none;
 }
@@ -634,13 +635,13 @@ footer p {
   }
 
   .social-links {
-    gap: 20px;
-    flex-wrap: nowrap;
-    max-width: 90%;
+    flex-wrap: wrap; /* <<< změnit na wrap */
+    gap: 15px;
   }
 
   .social-box {
-    width: 22vw;
+    flex: 1 1 40%;
+    max-width: 90px;
     min-width: 50px;
   }
 
