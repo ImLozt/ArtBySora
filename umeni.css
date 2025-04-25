@@ -150,7 +150,6 @@
     transform: translateX(100%) rotate(25deg);
   }
   
-  /* Efekt zvětšení na desktopu */
   @media (min-width: 768px) {
     nav:hover a {
       flex: 0.8;
@@ -164,7 +163,6 @@
     }
   }
   
-  /* Zmenšení pro malé obrazovky */
   @media (max-width: 600px) {
     nav {
       gap: 10px;
@@ -178,7 +176,6 @@
     }
   }
   
-  /* Zvýraznění pro větší zařízení */
   @media (min-width: 800px) {
     nav a {
       font-size: 1.8rem;
@@ -190,6 +187,14 @@
     padding: 5px 20px;
     padding-bottom: 25px;
   }
+
+    /* ↓ Na menších obrazovkách (např. mobily) */
+@media (max-width: 600px) {
+  .section {
+    padding: 0pc; /* menší odsazení */
+    padding-bottom: 15px;
+  }
+}
 
   
   .section h2 {
@@ -330,51 +335,49 @@
   }
   
   @media (max-width: 768px) {
-  .gallery img {
-    height: 300px;
+    .gallery img {
+      height: 300px;
+    }
+  
+    .card p {
+      font-size: 1.1em;
+      padding: 6px;
+    }
+  
+    .card p::after {
+      font-size: 1.4em;
+    }
   }
-
-  .card p {
-    font-size: 1.1em;
-    padding: 6px;
+  
+  @media (max-width: 500px) {
+    .gallery img {
+      height: 220px;
+    }
+  
+    .card p {
+      font-size: 1em;
+      padding: 5px;
+    }
+  
+    .card p::after {
+      font-size: 1.2em;
+    }
   }
-
-  .card p::after {
-    font-size: 1.4em;
+  
+  @media (max-width: 360px) {
+    .gallery img {
+      height: 180px;
+    }
+  
+    .card p {
+      font-size: 0.9em;
+      padding: 4px;
+    }
+  
+    .card p::after {
+      font-size: 1em;
+    }
   }
-}
-
-/* 📱📱 Úzké telefony (do 500px) */
-@media (max-width: 500px) {
-  .gallery img {
-    height: 220px;
-  }
-
-  .card p {
-    font-size: 1em;
-    padding: 5px;
-  }
-
-  .card p::after {
-    font-size: 1.2em;
-  }
-}
-
-/* 📱📱📱 Extra malé displeje (např. starší iPhony) */
-@media (max-width: 360px) {
-  .gallery img {
-    height: 180px;
-  }
-
-  .card p {
-    font-size: 0.9em;
-    padding: 4px;
-  }
-
-  .card p::after {
-    font-size: 1em;
-  }
-}
 
   .fullscreen-overlay {
     position: fixed;
@@ -503,86 +506,121 @@
 
 /*footer*/
 
+footer {
+  background: linear-gradient(135deg, #0b096e, #040333);
+  padding: 40px 20px;
+  text-align: center;
+}
+
+footer h2.footer-title {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  text-shadow: none;
+  text-align: center;
+}
+
+footer p {
+  font-size: 1.5em;
+  text-align: center;
+  margin: 0;
+}
+
+.social-links {
+  display: flex;
+  flex-wrap: wrap; /* <<< přidat */
+  justify-content: center;
+  gap: 20px;
+  margin: 20px auto;
+  width: 90%;
+  max-width: 600px;
+  overflow: hidden; /* <<< přidat pro jistotu */
+}
+
+.social-box {
+  flex: 1 1 80px; /* <<< změněno pro menší základ */
+  max-width: 100px;
+  min-width: 60px;
+  aspect-ratio: 1;
+  perspective: 600px;
+  text-decoration: none;
+}
+
+.social-box .box-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+
+.social-box:hover .box-inner {
+  transform: rotateY(180deg);
+}
+
+
+.social-box .front,
+.social-box .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+
+.social-box .front {
+  background: linear-gradient(135deg, #1e1d5e, #090799);
+}
+
+
+.social-box .front img {
+  max-width: 60%;
+  max-height: 60%;
+}
+
+
+.social-box .back {
+  color: #ffffff;
+  transform: rotateY(180deg);
+  font-size: 0.8rem;
+}
+
+@media (max-width: 600px) {
   footer {
-    background: linear-gradient(135deg, #0b096e, #040333);
-    padding: 40px 20px;
-    text-align: center;
-  }
-  
-  footer h2.footer-title {
-    font-size: 2.5em;
-    margin-bottom: 10px;
-    text-shadow: none;
-    text-align: center;
-  }
-  
-  footer p {
-    font-size: 1.5em;
-    text-align: center;
-    margin: 0;
-  }
-  
-  .social-links {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    margin: 20px auto;
-    width: 90%;       
-    max-width: 600px;  
-  }
-  
-  .social-box {
-    flex: 1 1 auto;
-    width: 10vw;       
-    max-width: 100px;  
-    min-width: 60px;   
-    aspect-ratio: 1;   
-    perspective: 600px;
-    text-decoration: none;
-  }
-  
-  .social-box .box-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-  }
-  
-  
-  .social-box:hover .box-inner {
-    transform: rotateY(180deg);
-  }
-  
-  
-  .social-box .front,
-  .social-box .back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
-  }
-  
-  
-  .social-box .front {
-    background: linear-gradient(135deg, #1e1d5e, #090799);
-  }
-  
-  
-  .social-box .front img {
-    max-width: 60%;
-    max-height: 60%;
-  }
-  
-  
-  .social-box .back {
-    color: #ffffff;
-    transform: rotateY(180deg);
-    font-size: 0.8rem;
+    padding: 20px 10px;
   }
 
-  
+  footer h2.footer-title {
+    font-size: 1.4em; /* ještě menší nadpis */
+  }
+
+  footer p {
+    font-size: 0.9em; /* menší popis */
+  }
+
+  .social-links {
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 100%;
+  }
+
+  .social-box {
+    width: 24vw; /* menší šířka krabiček */
+    min-width: 40px; 
+    max-width: 70px;
+  }
+
+  .social-box .front img {
+    max-width: 50%;
+    max-height: 50%;
+  }
+
+  .social-box .back {
+    font-size: 0.6rem;
+  }
+}
