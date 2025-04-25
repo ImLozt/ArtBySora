@@ -223,7 +223,7 @@ nav a:hover::before {
   }
 
   .section h2 {
-    font-size: 3em;
+    font-size: 4em;
   }
 }
 
@@ -314,21 +314,52 @@ nav a:hover::before {
   border-top-right-radius: 10px;
 }
 
-@media (max-width: 400px) {
-  .gallery { flex-direction: column; }
-  .card    { max-width: 100%; }
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  margin: 20px;
+  justify-items: center;
+  padding: 0 20px;
 }
 
 @media (max-width: 768px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr); /* 2 sloupce */
+    gap: 20px;
+    padding: 0 10px;
+  }
+
+  .card {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .gallery img {
+    height: 300px; /* aby obrázky nebyly moc vysoké na mobilech */
+  }
+
   .card p {
     font-size: 1.2em;
     padding: 6px;
   }
+}
 
+@media (max-width: 480px) {
   .gallery {
-    gap: 20px;
+    grid-template-columns: 1fr; /* Na velmi malých mobilech pod sebe */
+    gap: 15px;
+  }
+
+  .gallery img {
+    height: 250px;
+  }
+
+  .card p {
+    font-size: 1em;
   }
 }
+
 
 .fullscreen-overlay {
   position: fixed;
@@ -438,20 +469,47 @@ nav a:hover::before {
 
 @media (max-width: 768px) {
   .video {
-    flex-direction: column;     /* všechna videa pod sebe */
-    gap: 20px;                  /* menší mezera */
-    padding: 0 10px;            /* přidání horizontálního odsazení */
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* menší videa */
+    gap: 20px;
+    padding: 0 10px;
   }
 
   .video .card {
-    max-width: 100%;            /* zabere celou šířku rodiče */
-    margin: 0 auto;             /* vystředění */
+    max-width: 280px;
+    margin: 10px;
+  }
+
+  .preview-video {
+    height: auto;
+    max-height: 300px;
   }
 
   .video .card p {
-    font-size: 1.2em;           /* zmenšený text pro úzký prostor */
+    font-size: 1.2em;
+    padding: 6px;
   }
 }
+
+@media (max-width: 480px) {
+  .video {
+    grid-template-columns: 1fr; /* na mobilech úplně pod sebe */
+    gap: 15px;
+  }
+
+  .video .card {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  .video .card p {
+    font-size: 1em;
+  }
+
+  .preview-video {
+    max-height: 200px; /* aby nebyla videa na mobilech moc vysoká */
+  }
+}
+
 
 .sound-toggle {
   position: absolute;
@@ -637,31 +695,33 @@ footer p {
   }
 
   footer h2.footer-title {
-    font-size: 1.6em;
+    font-size: 1.4em; /* ještě menší nadpis */
   }
 
   footer p {
-    font-size: 1em;
+    font-size: 0.9em; /* menší popis */
   }
 
   .social-links {
-    flex-wrap: wrap; /* <<< změnit na wrap */
-    gap: 15px;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 100%;
   }
 
   .social-box {
-    flex: 1 1 40%;
-    max-width: 90px;
-    min-width: 50px;
-  }
-
-  .social-box .back {
-    font-size: 0.6rem;
+    width: 24vw; /* menší šířka krabiček */
+    min-width: 40px; 
+    max-width: 70px;
   }
 
   .social-box .front img {
     max-width: 50%;
     max-height: 50%;
+  }
+
+  .social-box .back {
+    font-size: 0.6rem;
   }
 }
 
