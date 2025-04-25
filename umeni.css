@@ -196,7 +196,6 @@
   }
 }
 
-  
   .section h2 {
     margin: 20px;
     text-align: left;
@@ -208,6 +207,16 @@
     margin: 10px;
     padding: 10px;
     font-size: 1.5em;
+  }
+
+  @media (max-width: 768px) {
+    .section p {
+      font-size: 1em;
+    }
+  
+    .section h2 {
+      font-size: 4em;
+    }
   }
   
   /* --- efektní najíždění obrázků --- */
@@ -222,34 +231,6 @@
     transform:translateY(0);
   }
 
-  .card {
-    background: linear-gradient(to right, #4b074bc2, #0a034ea2);
-    margin: 0 auto;
-    border-radius: 15px;
-    transition: transform 0.3s ease;
-    flex: 1 1 clamp(250px, 25%, 350px);
-    overflow: hidden;
-    position: relative;      
-    cursor: pointer;
-    box-shadow: 0px 0px 20px #0f0000ab;
-    will-change: transform;
-  }
-  
-  .card::before {
-    content: "";
-    position: absolute;
-    inset: 0;                        
-    background: linear-gradient(
-      135deg,
-      rgba(56, 91, 245, 0.404) 0%,
-      rgba(255, 255, 255, 0.045) 35%,
-      rgba(255, 53, 97, 0.123) 60%
-    );
-    mix-blend-mode: screen;            
-    pointer-events: none;                
-    transition: opacity .3s ease;
-  }
-  
   .card {
     background: linear-gradient(to right, #4b074bc2, #0a034ea2);
     margin: 0 auto;
@@ -335,46 +316,40 @@
   }
   
   @media (max-width: 768px) {
+    .gallery {
+      grid-template-columns: repeat(2, 1fr); /* 2 sloupce */
+      gap: 20px;
+      padding: 0 10px;
+    }
+  
+    .card {
+      max-width: 100%;
+      margin: 0 auto;
+    }
+  
     .gallery img {
-      height: 300px;
+      height: 300px; /* aby obrázky nebyly moc vysoké na mobilech */
+      width: 300px;
+      justify-content: center;
     }
   
     .card p {
-      font-size: 1.1em;
+      font-size: 1.2em;
       padding: 6px;
     }
-  
-    .card p::after {
-      font-size: 1.4em;
-    }
   }
   
-  @media (max-width: 500px) {
+  @media (max-width: 480px) {
+    .gallery {
+      grid-template-columns: 1fr; /* Na velmi malých mobilech pod sebe */
+      gap: 15px;
+    }
+  
     .gallery img {
-      height: 220px;
+      height: 250px;
     }
   
     .card p {
-      font-size: 1em;
-      padding: 5px;
-    }
-  
-    .card p::after {
-      font-size: 1.2em;
-    }
-  }
-  
-  @media (max-width: 360px) {
-    .gallery img {
-      height: 180px;
-    }
-  
-    .card p {
-      font-size: 0.9em;
-      padding: 4px;
-    }
-  
-    .card p::after {
       font-size: 1em;
     }
   }
