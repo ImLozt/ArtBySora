@@ -15,12 +15,27 @@
     text-shadow: 7px 0px 10px #3c3fff;
   }
   
+  h3 {
+    display: inline-block;
+    padding: 12px 28px;
+    margin-left: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    background: linear-gradient(135deg, #cc00ff, #42ccfe);
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 224, 255, 0.3);
+  }
+  
   body {
     font-family: 'Montserrat', sans-serif;
     color: white;
     line-height: 1.6;
     background-image: url('obrazky/pozadiwebu2.webp');
-    background-size: cover;
+    background-size: contain;
   }
   
   .container {
@@ -78,15 +93,6 @@
   
   .logo-link:hover {
     opacity: 0.7;
-  }
-  
-  .logo-scroll {
-    font-size: 2rem;
-    font-family: 'Great Vibes', cursive;
-    color: #000000;
-    height: 3rem;
-    overflow: hidden;
-    white-space: nowrap;
   }
   
   nav {
@@ -181,7 +187,15 @@
     padding: 5px 20px;
     padding-bottom: 25px;
   }
-  
+
+    /* ↓ Na menších obrazovkách (např. mobily) */
+@media (max-width: 600px) {
+  .section {
+    padding: 0pc; /* menší odsazení */
+    padding-bottom: 15px;
+  }
+}
+
   .section h2 {
     margin: 20px;
     text-align: left;
@@ -194,129 +208,210 @@
     padding: 10px;
     font-size: 1.5em;
   }
-  
-  /*footer*/
-  
-  footer {
-    background: linear-gradient(135deg, #0b096e, #040333);
-    padding: 30px 15px; /* trošku menší padding */
-    text-align: center;
-  }
-  
-  footer h2.footer-title {
-    font-size: 2.2em; /* lehce menší */
-    margin-bottom: 10px;
-    text-shadow: none;
-  }
-  
-  footer p {
-    font-size: 1.3em;
-    margin: 0;
-  }
-  
-  .social-links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px; /* menší mezera */
-    margin: 20px auto;
-    width: 95%;
-    max-width: 900px; /* umožní trochu širší footer */
-    overflow: hidden;
-  }
-  
-  .social-box {
-    flex: 1 1 70px; /* užší základ */
-    max-width: 80px;
-    min-width: 50px;
-    aspect-ratio: 1;
-    perspective: 600px;
-    text-decoration: none;
-  }
-  
-  .social-box .box-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-  }
-  
-  .social-box:hover .box-inner {
-    transform: rotateY(180deg);
-  }
-  
-  .social-box .front,
-  .social-box .back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
-  }
-  
-  .social-box .front {
-    background: linear-gradient(135deg, #1e1d5e, #090799);
-  }
-  
-  .social-box .front img {
-    max-width: 60%;
-    max-height: 60%;
-  }
-  
-  .social-box .back {
-    color: #ffffff;
-    transform: rotateY(180deg);
-    font-size: 0.7rem;
-  }
-  
-  /* Na mobilech */
-  @media (max-width: 600px) {
-    footer {
-      padding: 15px 10px;
-    }
-  
-    footer h2.footer-title {
-      font-size: 1.5em;
-    }
-  
-    footer p {
+
+  @media (max-width: 768px) {
+    .section p {
       font-size: 1em;
     }
   
-    .social-links {
-      gap: 8px;
-      max-width: 100%;
-    }
-  
-    .social-box {
-      width: 20vw;
-      min-width: 40px;
-      max-width: 60px;
-    }
-  
-    .social-box .front img {
-      max-width: 50%;
-      max-height: 50%;
-    }
-  
-    .social-box .back {
-      font-size: 0.5rem;
+    .section h2 {
+      font-size: 4em;
     }
   }
   
+  /* --- efektní najíždění obrázků --- */
+  .lazy{
+    opacity:0;
+    transform:translateY(40px);
+    transition:opacity .8s ease-out, transform .8s ease-out;
+  }
+  
+  .lazy.show{          /* přidá JS → spustí animaci */
+    opacity:1;
+    transform:translateY(0);
+  }
 
-  .social-karty {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    margin-top: 40px;
+  .card {
+    background: linear-gradient(to right, #4b074bc2, #0a034ea2);
+    margin: 0 auto;
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+    max-width: 350px;
+    flex: 1 1 300px;
+    overflow: hidden;
+    position: relative;      
+    cursor: pointer;
+    box-shadow: 0px 0px 20px #0f0000ab;
   }
   
+  .card::before {
+    content: "";
+    position: absolute;
+    inset: 0;                        
+    background: linear-gradient(
+      135deg,
+      rgba(56, 91, 245, 0.404) 0%,
+      rgba(255, 255, 255, 0.045) 35%,
+      rgba(255, 53, 97, 0.123) 60%
+    );
+    mix-blend-mode: screen;            
+    pointer-events: none;                
+    transition: opacity .3s ease;
+  }
+  
+  .card p {
+    margin: 0 10px 6px;
+    padding: 8px;
+    font-size: 1.5em;
+    position: relative;     
+    padding-right: 1.2em; 
+  }
+  
+  .card p::after {
+    content: "»";               
+    position: absolute;
+    right: 10px;         
+    top: 40%;
+    transform: translateY(-50%);
+    font-size: 1.2em;   
+    color: inherit;         
+    font-size: 2em; 
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+    z-index: 2;
+    box-shadow: 0 0 20px rgba(9, 206, 255, 0.842);
+  }
+  
+  .card:hover::before {                    
+    opacity: 0;
+  }
+  
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    margin: 20px;
+    justify-items: center;
+    padding: 0 20px;
+  }
+  
+  .gallery img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    transition: transform 0.3s ease, object-fit 0.3s ease;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    margin: 20px;
+    justify-items: center;
+    padding: 0 20px;
+  }
+  
+  @media (max-width: 768px) {
+    .gallery {
+      grid-template-columns: repeat(2, 1fr); /* 2 sloupce */
+      gap: 20px;
+      padding: 0 10px;
+    }
+  
+    .card {
+      max-width: 100%;
+      margin: 0 auto;
+    }
+  
+    .gallery img {
+      height: 300px; /* aby obrázky nebyly moc vysoké na mobilech */
+      width: 300px;
+      justify-content: center;
+    }
+  
+    .card p {
+      font-size: 1.2em;
+      padding: 6px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .gallery {
+      grid-template-columns: 1fr; /* Na velmi malých mobilech pod sebe */
+      gap: 15px;
+    }
+  
+    .gallery img {
+      height: 250px;
+    }
+  
+    .card p {
+      font-size: 1em;
+    }
+  }
+
+  .fullscreen-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+    opacity: 0;
+    animation: fadeOverlay 0.3s ease-out forwards;
+  }
+  
+  @keyframes fadeOverlay {
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .fullscreen-overlay img,
+  .fullscreen-overlay video {
+    width: auto;
+    max-width: 90vw;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 12px;
+    animation: zoomImage 0.4s ease-out forwards;
+    transform: scale(0.8);
+  }
+  
+  @keyframes zoomImage {
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  .fullscreen-overlay p {
+    color: white;
+    margin-top: 20px;
+    font-size: 1.2rem;
+    text-align: center;
+  }
+  
+  .fullscreen-overlay::after {
+    content: '✖';
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+  }
 
   .tlacitko {
     display: inline-block;
@@ -371,11 +466,8 @@
   }
   
   #tlacitko-uvitani {
-    margin: 5vw auto 0 auto;    /* nahoře 5vw, horizontálně auto = centrování */
+    margin-bottom: 5vw;
     font-size: 1.5rem;
-    max-width: 500px;           /* nepřesáhne šířku ani na mobilu */
-    text-align: center;
-    margin-bottom: 3vw;
   }
   
   @media (max-width: 600px) {
@@ -384,79 +476,118 @@
       padding: 14px 0;
       font-size: 1rem;
     }
-  
-    #tlacitko-uvitani {
-      display: block;
-      padding: 10px 8px;
-      font-size: 1rem;
-    }
   }
 
-  .social-blok.instagram {
-    background: linear-gradient(135deg, #0c0d335e, #160a55);
-    margin: 21px;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 0 20px rgba(78, 88, 233, 0.2);
-    margin-bottom: 40px;
-    color: white;
-  }
-  
-  .social-blok.instagram h3 {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 2.5em;
-    font-family: 'Bebas Neue', sans-serif;
-    margin-left: 25px;
-  }
-  
-  .social-blok.instagram h3 img {
-    width: 40px;
-    height: 40px;
-  }
-  
-  .instagram-grid {
-    display: flex;
-    gap: 60px;
-    flex-wrap: wrap;
-    margin-bottom: 25px;
-    margin-left: 25px;
-    margin-top: 10px;
-  }
-  
-  .ig-profil {
-    width: 110px;
-  }
-  
-  .ig-profil img {
-    width: 100%;
-    height: 110px;
-    margin: 8px;
-    border-radius: 10px;
-    object-fit: cover;
-    box-shadow: 0 0 8px rgba(12, 5, 105, 0.2);
-    transition: transform 0.3s ease;
-  }
-  
-  .ig-profil img:hover {
-    transform: scale(1.05);
-  }
-  
-  .ig-profil span {
-    display: block;
-    margin-top: 8px;
-    font-weight: bold;
-    font-size: 0.9em;
-    color: #ffffff;
 
+/*footer*/
+
+footer {
+  background: linear-gradient(135deg, #0b096e, #040333);
+  padding: 30px 15px; /* trošku menší padding */
+  text-align: center;
+}
+
+footer h2.footer-title {
+  font-size: 2.2em; /* lehce menší */
+  margin-bottom: 10px;
+  text-shadow: none;
+}
+
+footer p {
+  font-size: 1.3em;
+  margin: 0;
+}
+
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px; /* menší mezera */
+  margin: 20px auto;
+  width: 95%;
+  max-width: 900px; /* umožní trochu širší footer */
+  overflow: hidden;
+}
+
+.social-box {
+  flex: 1 1 70px; /* užší základ */
+  max-width: 80px;
+  min-width: 50px;
+  aspect-ratio: 1;
+  perspective: 600px;
+  text-decoration: none;
+}
+
+.social-box .box-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.social-box:hover .box-inner {
+  transform: rotateY(180deg);
+}
+
+.social-box .front,
+.social-box .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+.social-box .front {
+  background: linear-gradient(135deg, #1e1d5e, #090799);
+}
+
+.social-box .front img {
+  max-width: 60%;
+  max-height: 60%;
+}
+
+.social-box .back {
+  color: #ffffff;
+  transform: rotateY(180deg);
+  font-size: 0.7rem;
+}
+
+/* Na mobilech */
+@media (max-width: 600px) {
+  footer {
+    padding: 15px 10px;
   }
-  
-  .ig-popis {
-    font-size: 1.2em;
-    line-height: 1.6;
-    text-align: left;
-    margin: 0 auto;
+
+  footer h2.footer-title {
+    font-size: 1.5em;
   }
-  
-  
+
+  footer p {
+    font-size: 1em;
+  }
+
+  .social-links {
+    gap: 8px;
+    max-width: 100%;
+  }
+
+  .social-box {
+    width: 20vw;
+    min-width: 40px;
+    max-width: 60px;
+  }
+
+  .social-box .front img {
+    max-width: 50%;
+    max-height: 50%;
+  }
+
+  .social-box .back {
+    font-size: 0.5rem;
+  }
+}
