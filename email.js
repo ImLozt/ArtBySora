@@ -1,26 +1,30 @@
-emailjs.init("_MzkZjTQUDdf2lRlW");
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('form-status');
 
-// b) Přidáme posluchač odeslání
-document.getElementById("contact-form")
-  .addEventListener("submit", function(e) {
+  form.addEventListener('submit', async e => {
     e.preventDefault();
+    status.textContent = 'Odesílám…';
 
-    const status = document.getElementById("form-status");
+    const data = new FormData(form);
 
-    emailjs.sendForm(
-      "service_jz0p45j",   // tvé Service ID
-      "template_r1zs899",  // tvé Template ID (z Email Templates)
-      this                 // odkaz na <form>
-    )
-    .then(function() {
-      status.textContent = "Zpráva byla úspěšně odeslána!";
-      status.classList.add("visible");
-      this.reset();
-    }.bind(this))
-    .catch(function(err) {
-      console.error("EmailJS error:", err);
-      status.textContent = "Něco se nepovedlo, zkus to prosím později.";
-      status.style.color = "salmon";
-      status.classList.add("visible");
-    });
+    try {
+      const res = await fetch(form.action, {
+        method: form.method,
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        status.textContent = 'Díky za zprávu, ozvu se co nejdříve!';
+        form.reset();
+      } else {
+        const json = await res.json();
+        throw new Error(json.error || 'Chyba při odesílání');
+      }
+    } catch (err) {
+      status.textContent = 'Něco se nepovedlo – zkus to prosím později.';
+      console.error('Formspree error:', err);
+    }
   });
+});
