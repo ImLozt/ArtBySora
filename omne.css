@@ -199,6 +199,13 @@ nav a:hover::before {
   padding-bottom: 25px;
 }
 
+@media (max-width: 600px) {
+  .section #uvitani {
+    padding: 0px; /* menší odsazení */
+    padding-bottom: 15px;
+  }
+}
+
 .section h2 {
   margin: 20px;
   text-align: left;
@@ -210,6 +217,16 @@ nav a:hover::before {
   margin: 10px;
   padding: 10px;
   font-size: 1.5em;
+}
+
+@media (max-width: 768px) {
+  .section p {
+    font-size: 1em;
+  }
+
+  .section h2 {
+    font-size: 4em;
+  }
 }
 
 .tlacitko {
