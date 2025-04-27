@@ -200,6 +200,12 @@
     padding-bottom: 25px;
   }
 
+  @media (max-width: 600px) {
+    .section #uvitani {
+      padding: 0px; /* menší odsazení */
+      padding-bottom: 15px;
+    }
+  }
   
   .section h2 {
     margin: 20px;
@@ -212,6 +218,16 @@
     margin: 10px;
     padding: 10px;
     font-size: 1.5em;
+  }
+
+  @media (max-width: 768px) {
+    .section p {
+      font-size: 1em;
+    }
+  
+    .section h2 {
+      font-size: 4em;
+    }
   }
   
   /* --- efektní najíždění obrázků --- */
@@ -332,19 +348,44 @@
 
   @media (max-width: 768px) {
     .video {
-      flex-direction: column;     /* všechna videa pod sebe */
-      gap: 20px;                  /* menší mezera */
-      padding: 0 10px;            /* přidání horizontálního odsazení */
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* menší videa */
+      gap: 20px;
+      padding: 0 10px;
     }
   
     .video .card {
-      max-width: 100%;            /* zabere celou šířku rodiče */
-      margin: 0 auto;             /* vystředění */
+      max-width: 280px;
+      margin: 10px;
+    }
+  
+    .preview-video {
+      height: auto;
+      max-height: 300px;
     }
   
     .video .card p {
-      font-size: 1.2em;           /* zmenšený text pro úzký prostor */
+      font-size: 1.2em;
+      padding: 6px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .video {
+      grid-template-columns: 1fr; /* na mobilech úplně pod sebe */
+      gap: 15px;
+    }
+  
+    .video .card {
+      max-width: 90%;
+      margin: 0 auto;
+    }
+  
+    .video .card p {
+      font-size: 1em;
+    }
+  
+    .preview-video {
+      max-height: 200px; /* aby nebyla videa na mobilech moc vysoká */
     }
   }
   
