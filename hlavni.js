@@ -1,4 +1,4 @@
-// main.js
+
 /* klik na obrázek – jen pro karty s <img> */
 document.querySelectorAll('.card').forEach(card => {
   card.addEventListener('click', () => {
@@ -54,10 +54,10 @@ document.querySelectorAll('.video-box').forEach(box => {
   const bg2 = document.getElementById('bg2');
   if (bg1 && bg2) {
     const pics = [
-      'obrazky/kresby/Saber2.webp',
-      'obrazky/kresby/leblanc2.webp',
-      'obrazky/kresby/Návrhová plocha 4.webp',
-      'obrazky/kresby/titulni_strana_done.webp'
+      '../obrazky/kresby/Saber2.webp',
+      '../obrazky/kresby/leblanc2.webp',
+      '../obrazky/kresby/Návrhová_plocha_4.webp',
+      '../obrazky/kresby/titulni_strana_done.webp'
     ];
     let i = 0, showBg1 = true;
     bg1.style.backgroundImage = `url('${pics[0]}')`;
