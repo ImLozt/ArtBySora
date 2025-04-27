@@ -1,589 +1,507 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-  }
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+h1 {
+  font-family: 'Great Vibes', cursive;
+  text-decoration: none;
+}
+
+h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  text-shadow: 7px 0px 10px #3c3fff;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  line-height: 1.6;
+  background-image: url('obrazky/pozadiwebu2.webp');
+  background-size: cover;
+}
+
+.container {
+  max-width: 1300px;
+  width: 100%;
+  margin: 0 auto;
+  background: linear-gradient(135deg, 
+  #1730b9,  
+  #0f0850,  
+  #05071a,  
+  #350833,   
+  #23043d    
+);
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 0 155px rgba(46, 60, 255, 0.74);
+}
   
-  h1 {
-    font-family: 'Great Vibes', cursive;
-    text-decoration: none;
-  }
-  
-  h2 {
-    font-family: 'Bebas Neue', sans-serif;
-    text-shadow: 7px 0px 10px #3c3fff;
-  }
-  
-  body {
-    font-family: 'Montserrat', sans-serif;
-    color: white;
-    line-height: 1.6;
-    background-image: url('obrazky/pozadiwebu2.webp');
-    background-size: cover;
-  }
-  
-  .container {
-    max-width: 1300px;
-    width: 100%;
-    margin: 0 auto;
-    background: linear-gradient(135deg, 
-    #1730b9,    /* modrá 1 */
-    #0f0850,    /* tmavě fialová */
-    #05071a,    /* velmi tmavá modrá */
-    #350833,    /* fialová s červeným nádechem */
-    #23043d     /* temná fialová */
+/* hlavicka */
+
+#hero-header {
+  background: linear-gradient(to bottom, #19258f85, #c82bf800);
+  color: #131628;
+  padding: 25px 0;
+  transition: transform 0.3s ease;
+  display: flex;
+  opacity: 1;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  justify-content:space-between; 
+}
+
+.header-content {
+  padding: 0 40px;
+  display: flex;
+  transition: all 0.6s ease;
+}
+
+#hero-header.hidden {
+  transform: translateY(-100%);
+}
+
+.logo-link {
+  color: #ffffff;
+  transition: all 0.3s ease;
+  padding: 3px;
+}
+
+.logo-link:hover {
+  opacity: 0.7;
+}
+
+/* navigace */
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  overflow: hidden;
+  padding: 10px;
+  flex-wrap: nowrap;
+}
+
+nav a {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  text-align: center;
+  padding: 8px 10px;
+  font-size: 1.3rem;
+  background: linear-gradient(
+    to right,
+    #4447fdd5,
+    #318affa2,
+    #3634dbb9
   );
-    background-size: cover;
-    background-position: center;
-    box-shadow: 0 0 155px rgba(46, 60, 255, 0.74);
+  color: rgb(255, 255, 255);
+  font-family: 'Bebas Neue', sans-serif;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0px 2px 12px #250344;
+  transition: all 0.3s ease;
+}
+
+nav a::before {
+  content: '';
+  position: absolute;
+  top: -110%;
+  left: -50%;
+  width: 180%;
+  height: 400%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.5),
+    transparent
+  );
+  transform: translateX(-100%) rotate(25deg);
+  transition: transform 0.5s ease;
+  pointer-events: none;
+}
+
+nav a:hover::before {
+  transform: translateX(100%) rotate(25deg);
+}
+
+@media (min-width: 768px) {
+  nav:hover a {
+    flex: 0.8;
   }
-  
-  #uvitani {
-    position: relative;
-    padding: 10px 20px;
-    overflow: hidden;
-    z-index: 1;
-    color: white;
+
+  nav a:hover {
+    flex: 2;
+    background: rgba(0, 224, 255, 0.1);
+    color: #00e0ff;
+    box-shadow: 0px 0px 0px #490652;
   }
-    
-  #hero-header {
-    background: linear-gradient(to bottom, #19258f85, #c82bf800);
-    color: #131628;
-    padding: 25px 0;
-    transition: transform 0.3s ease;
-    display: flex;
-    opacity: 1;
-    position: sticky;
-    top: 0;
-    z-index: 999;
-    justify-content:space-between; /* logo vlevo, tlačítko vpravo */
-  }
-  
-  .header-content {
-    padding: 0 40px;
-    display: flex;
-    transition: all 0.6s ease;
-  }
-  
-  #hero-header.hidden {
-    transform: translateY(-100%);
-  }
-  
-  .logo-link {
-    color: #ffffff;
-    transition: all 0.3s ease;
-    padding: 3px;
-  }
-  
-  .logo-link:hover {
-    opacity: 0.7;
-  }
-  
-  .logo-scroll {
-    font-size: 2rem;
-    font-family: 'Great Vibes', cursive;
-    color: #000000;
-    height: 3rem;
-    overflow: hidden;
-    white-space: nowrap;
-  }
-  
+}
+
+@media (max-width: 600px) {
   nav {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    overflow: hidden;
-    padding: 10px;
-    flex-wrap: nowrap;
+    gap: 10px;
+    padding: 5px 5px 15px;
   }
-  
+
   nav a {
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex: 1;
-    text-align: center;
-    padding: 8px 10px;
-    font-size: 1.3rem;
-    background: linear-gradient(
-      to right,
-      #4447fdd5,
-      #318affa2,
-      #3634dbb9
-    );
-    color: rgb(255, 255, 255);
-    font-family: 'Bebas Neue', sans-serif;
-    border: none;
-    border-radius: 20px;
-    box-shadow: 0px 2px 12px #250344;
-    transition: all 0.3s ease;
+    padding: 6px 4px;
+    font-size: 1rem;
+    border-radius: 12px;
   }
-  
-  nav a::before {
-    content: '';
-    position: absolute;
-    top: -110%;
-    left: -50%;
-    width: 180%;
-    height: 400%;
-    background: linear-gradient(
-      120deg,
-      transparent,
-      rgba(255, 255, 255, 0.5),
-      transparent
-    );
-    transform: translateX(-100%) rotate(25deg);
-    transition: transform 0.5s ease;
-    pointer-events: none;
+}
+
+@media (min-width: 800px) {
+  nav a {
+    font-size: 1.8rem;
   }
-  
-  nav a:hover::before {
-    transform: translateX(100%) rotate(25deg);
-  }
-  
-  @media (min-width: 768px) {
-    nav:hover a {
-      flex: 0.8;
-    }
-  
-    nav a:hover {
-      flex: 2;
-      background: rgba(0, 224, 255, 0.1);
-      color: #00e0ff;
-      box-shadow: 0px 0px 0px #490652;
-    }
-  }
-  
-  @media (max-width: 600px) {
-    nav {
-      gap: 10px;
-      padding: 5px 5px 15px;
-    }
-  
-    nav a {
-      padding: 6px 4px;
-      font-size: 1rem;
-      border-radius: 12px;
-    }
-  }
-  
-  @media (min-width: 800px) {
-    nav a {
-      font-size: 1.8rem;
-    }
-  }
-  
-  
-  .section {
-    padding: 5px 20px;
-    padding-bottom: 25px;
-  }
-  
-  @media (max-width: 600px) {
-    .section #uvitani {
-      padding: 0px; /* menší odsazení */
-      padding-bottom: 15px;
-    }
+}
+
+.section {
+  padding: 5px 20px;
+  padding-bottom: 10px;
+}
+
+.section h2 {
+  margin: 20px;
+  text-align: left;
+  font-size: 5em;
+  margin-bottom: 20px;
+}
+
+.section p {
+  margin: 10px;
+  padding: 10px;
+  font-size: 1.5em;
+}
+
+@media (max-width: 768px) {
+  .section p {
+    font-size: 1em;
   }
 
   .section h2 {
-    margin: 20px;
-    text-align: left;
-    font-size: 5em;
-    margin-bottom: 20px;
+    font-size: 4em;
   }
-  
-  .section p {
-    margin: 10px;
-    padding: 10px;
+}
+
+/*footer*/
+
+footer {
+  background: linear-gradient(135deg, #0b096e, #040333);
+  padding: 30px 15px;
+  text-align: center;
+}
+
+footer h2.footer-title {
+  font-size: 2.2em; 
+  margin-bottom: 10px;
+  text-shadow: none;
+}
+
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px; 
+  margin: 20px auto;
+  width: 95%;
+  max-width: 900px; 
+  overflow: hidden;
+}
+
+.social-box {
+  flex: 1 1 70px;
+  max-width: 80px;
+  min-width: 50px;
+  aspect-ratio: 1;
+  perspective: 600px;
+  text-decoration: none;
+}
+
+.social-box .box-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.social-box:hover .box-inner {
+  transform: rotateY(180deg);
+}
+
+.social-box .front,
+.social-box .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+.social-box .front {
+  background: linear-gradient(135deg, #1e1d5e, #090799);
+}
+
+.social-box .front img {
+  max-width: 60%;
+  max-height: 60%;
+}
+
+.social-box .back {
+  color: #ffffff;
+  transform: rotateY(180deg);
+  font-size: 0.7rem;
+}
+
+/* Na mobilech */
+@media (max-width: 600px) {
+  footer {
+    padding: 15px 10px;
+  }
+
+  footer h2.footer-title {
     font-size: 1.5em;
   }
 
-  @media (max-width: 768px) {
-    .section p {
-      font-size: 1em;
-    }
-  
-    .section h2 {
-      font-size: 4em;
-    }
-  }
-  
-  /*footer*/
-  
-  footer {
-    background: linear-gradient(135deg, #0b096e, #040333);
-    padding: 30px 15px; /* trošku menší padding */
-    text-align: center;
-  }
-  
-  footer h2.footer-title {
-    font-size: 2.2em; /* lehce menší */
-    margin-bottom: 10px;
-    text-shadow: none;
-  }
-  
-  footer p {
-    font-size: 1.3em;
-    margin: 0;
-  }
-  
   .social-links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px; /* menší mezera */
-    margin: 20px auto;
-    width: 95%;
-    max-width: 900px; /* umožní trochu širší footer */
-    overflow: hidden;
+    gap: 8px;
+    max-width: 100%;
   }
-  
+
   .social-box {
-    flex: 1 1 70px; /* užší základ */
-    max-width: 80px;
-    min-width: 50px;
-    aspect-ratio: 1;
-    perspective: 600px;
-    text-decoration: none;
+    width: 20vw;
+    min-width: 40px;
+    max-width: 60px;
   }
-  
-  .social-box .box-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-  }
-  
-  .social-box:hover .box-inner {
-    transform: rotateY(180deg);
-  }
-  
-  .social-box .front,
-  .social-box .back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
-  }
-  
-  .social-box .front {
-    background: linear-gradient(135deg, #1e1d5e, #090799);
-  }
-  
+
   .social-box .front img {
-    max-width: 60%;
-    max-height: 60%;
+    max-width: 50%;
+    max-height: 50%;
   }
-  
+
   .social-box .back {
-    color: #ffffff;
-    transform: rotateY(180deg);
-    font-size: 0.7rem;
+    font-size: 0.5rem;
   }
-  
-  /* Na mobilech */
-  @media (max-width: 600px) {
-    footer {
-      padding: 15px 10px;
-    }
-  
-    footer h2.footer-title {
-      font-size: 1.5em;
-    }
-  
-    footer p {
-      font-size: 1em;
-    }
-  
-    .social-links {
-      gap: 8px;
-      max-width: 100%;
-    }
-  
-    .social-box {
-      width: 20vw;
-      min-width: 40px;
-      max-width: 60px;
-    }
-  
-    .social-box .front img {
-      max-width: 50%;
-      max-height: 50%;
-    }
-  
-    .social-box .back {
-      font-size: 0.5rem;
-    }
-  }
-  
+}
 
-  .social-karty {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    margin-top: 40px;
-  }
-  
+/* tlacitka */
 
-  .tlacitko {
-    display: inline-block;
-    padding: 12px 28px;
-    margin: 20px;
-    margin-top: 50px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: #23282c;
-    background: linear-gradient(135deg, #00e0ff, #42ccfe);
-    border: none;
-    border-radius: 8px;
-    text-align: center;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 224, 255, 0.3);
-  }
-  
-  .tlacitko:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 15px rgba(0, 224, 255, 0.5);
-  }
-  
-  #tlacitko-header {
-    display:flex;              /* ← aby text a ikonka byly vedle sebe */
-    align-items:center;
-    gap:8px;                   /* mezera mezi textem a ikonou */
-    font-size: 1.1rem;
-    padding: 10px;
-    margin-right: 40px;
-    font-weight: bold;
-    color: #ffffff;
-    background: linear-gradient(
-      to right,
-      #4447fdd5,
-      #318affa2,
-      #3634dbb9
-    );
-    border: none;
-    border-radius: 8px;
-    text-align: center;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(3, 5, 39, 0.3);
-  }
-  
-  #tlacitko-header:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 15px rgba(108, 111, 255, 0.699);
-  }
-  
-  #tlacitko-header img{
-    width:20px; height:20px;   /* sjednocená velikost ikony */
-  }
-  
-  #tlacitko-uvitani {
-    margin: 5vw auto 0 auto;    /* nahoře 5vw, horizontálně auto = centrování */
-    font-size: 1.5rem;
-    max-width: 500px;           /* nepřesáhne šířku ani na mobilu */
-    text-align: center;
-    margin-bottom: 3vw;
-  }
-  
-  @media (max-width: 600px) {
-    .tlacitko {
-      display: block;
-      padding: 14px 0;
-      font-size: 1rem;
-    }
-  
-    #tlacitko-uvitani {
-      display: block;
-      padding: 10px 8px;
-      font-size: 1rem;
-    }
-  }
+#tlacitko-header {
+  display:flex;        
+  align-items:center;
+  gap:8px;                 
+  font-size: 1.1rem;
+  padding: 10px;
+  margin-right: 40px;
+  font-weight: bold;
+  color: #ffffff;
+  background: linear-gradient(
+    to right,
+    #4447fdd5,
+    #318affa2,
+    #3634dbb9
+  );
+  border: none;
+  border-radius: 8px;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(3, 5, 39, 0.3);
+}
 
-  .social-blok.instagram {
-    background: linear-gradient(135deg, #0c0d335e, #160a55);
-    margin: 21px;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 0 20px rgba(78, 88, 233, 0.2);
-    margin-bottom: 40px;
-    color: white;
-  }
-  
-  .social-blok.instagram h3 {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 2.5em;
-    font-family: 'Bebas Neue', sans-serif;
-    margin-left: 25px;
-  }
-  
-  .social-blok.instagram h3 img {
-    width: 40px;
-    height: 40px;
-  }
-  
-  .instagram-grid {
-    display: flex;
-    gap: 60px;
-    flex-wrap: wrap;
-    margin-bottom: 25px;
-    margin-left: 25px;
-    margin-top: 10px;
-  }
-  
-  .ig-profil {
-    width: 110px;
-  }
-  
-  .ig-profil img {
-    width: 100%;
-    height: 110px;
-    margin: 8px;
-    border-radius: 10px;
-    object-fit: cover;
-    box-shadow: 0 0 8px rgba(12, 5, 105, 0.2);
-    transition: transform 0.3s ease;
-  }
-  
-  .ig-profil img:hover {
-    transform: scale(1.05);
-  }
-  
-  .ig-profil span {
-    display: block;
-    margin-top: 8px;
-    font-weight: bold;
-    font-size: 0.9em;
-    color: #ffffff;
+#tlacitko-header:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(108, 111, 255, 0.699);
+}
 
-  }
-  
-  .ig-popis {
-    font-size: 1.2em;
-    line-height: 1.6;
-    text-align: left;
-    margin: 0 auto;
-  }
-  
-  /* Tablet (do 1024px) */
+#tlacitko-header img{
+  width:20px; height:20px;  
+}
+
+.social-blok.instagram {
+  background: linear-gradient(135deg, #0c0d335e, #160a55);
+  margin: 21px;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(78, 88, 233, 0.2);
+  margin-bottom: 40px;
+  color: white;
+}
+
+.social-blok.instagram h3 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 2.5em;
+  font-family: 'Bebas Neue', sans-serif;
+  margin-left: 25px;
+}
+
+.social-blok.instagram h3 img {
+  width: 40px;
+  height: 40px;
+}
+
+.instagram-grid {
+  display: flex;
+  gap: 60px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+  margin-left: 25px;
+  margin-top: 10px;
+}
+
+.ig-profil {
+  width: 110px;
+}
+
+.ig-profil img {
+  width: 100%;
+  height: 110px;
+  margin: 8px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 0 8px rgba(12, 5, 105, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.ig-profil img:hover {
+  transform: scale(1.05);
+}
+
+.ig-profil span {
+  display: block;
+  margin-top: 8px;
+  font-weight: bold;
+  font-size: 0.9em;
+  color: #ffffff;
+
+}
+
+.ig-popis {
+  font-size: 1.2em;
+  line-height: 1.6;
+  text-align: left;
+  margin: 0 auto;
+}
+
+/* Tablet (do 1024px) */
 @media (max-width: 1024px) {
-  .social-blok.instagram {
-    margin: 16px;
-    padding: 24px;
-  }
+.social-blok.instagram {
+  margin: 16px;
+  padding: 24px;
+}
 
-  .social-blok.instagram h3 {
-    font-size: 2.2em;
-    gap: 10px;
-    margin-left: 20px;
-  }
+.social-blok.instagram h3 {
+  font-size: 2.2em;
+  gap: 10px;
+  margin-left: 20px;
+}
 
-  .instagram-grid {
-    gap: 40px;
-    margin-left: 20px;
-    margin-bottom: 20px;
-  }
+.instagram-grid {
+  gap: 40px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
 
-  .ig-profil {
-    width: 90px;
-  }
+.ig-profil {
+  width: 90px;
+}
 
-  .ig-profil img {
-    height: 90px;
-    margin: 6px;
-  }
+.ig-profil img {
+  height: 90px;
+  margin: 6px;
+}
 }
 
 /* Phablet / velké mobily (do 768px) */
 @media (max-width: 768px) {
-  .social-blok.instagram {
-    margin: 12px;
-    padding: 20px;
-  }
+.social-blok.instagram {
+  margin: 12px;
+  padding: 20px;
+}
 
-  .social-blok.instagram h3 {
-    font-size: 1.9em;
-    gap: 8px;
-    margin-left: 16px;
-  }
+.social-blok.instagram h3 {
+  font-size: 1.9em;
+  gap: 8px;
+  margin-left: 16px;
+}
 
-  .instagram-grid {
-    gap: 30px;
-    margin-left: 16px;
-  }
+.instagram-grid {
+  gap: 30px;
+  margin-left: 16px;
+}
 
-  .ig-profil {
-    width: 80px;
-  }
+.ig-profil {
+  width: 80px;
+}
 
-  .ig-profil img {
-    height: 80px;
-    margin: 5px;
-  }
+.ig-profil img {
+  height: 80px;
+  margin: 5px;
+}
 
-  .ig-profil span {
-    font-size: 0.65em;
-    text-align: center;
-  }
+.ig-profil span {
+  font-size: 0.65em;
+  text-align: center;
+}
 
-  .ig-popis {
-    font-size: 1.1em;
-    padding: 0 12px;
-  }
+.ig-popis {
+  font-size: 1.1em;
+  padding: 0 12px;
+}
 }
 
 /* Mobil (do 480px) */
 @media (max-width: 480px) {
-  .social-blok.instagram {
-    margin: 8px;
-    padding: 16px;
-    box-shadow: none;
-  }
-
-  .social-blok.instagram h3 {
-    font-size: 1.6em;
-    gap: 6px;
-    margin-left: 12px;
-  }
-
-  .instagram-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    margin: 10px auto;
-    margin-left: 0;
-  }
-
-  .ig-profil {
-    width: 100%;
-    max-width: 200px;
-  }
-
-  .ig-profil img {
-    height: auto;
-    width: 100%;
-    margin: 4px 0;
-  }
-
-  .ig-profil span {
-    font-size: 0.45em;
-    text-align: center;
-  }
-
-  .ig-popis {
-    font-size: 1em;
-    padding: 0 8px;
-  }
+.social-blok.instagram {
+  margin: 8px;
+  padding: 16px;
+  box-shadow: none;
 }
 
+.social-blok.instagram h3 {
+  font-size: 1.6em;
+  gap: 6px;
+  margin-left: 12px;
+}
+
+.instagram-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 10px auto;
+  margin-left: 0;
+}
+
+.ig-profil {
+  width: 100%;
+  max-width: 200px;
+}
+
+.ig-profil img {
+  height: auto;
+  width: 100%;
+  margin: 4px 0;
+}
+
+.ig-profil span {
+  font-size: 0.45em;
+  text-align: center;
+}
+
+.ig-popis {
+  font-size: 1em;
+  padding: 0 8px;
+}
+}
