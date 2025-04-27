@@ -15,21 +15,6 @@ h2 {
   text-shadow: 7px 0px 10px #3c3fff;
 }
 
-h3 {
-  display: inline-block;
-  padding: 12px 28px;
-  margin-left: 20px;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #ffffff;
-  background: linear-gradient(135deg, #cc00ff, #42ccfe);
-  border: none;
-  border-radius: 8px;
-  text-decoration: none;
-  text-align: center;
-  box-shadow: 0 4px 10px rgba(0, 224, 255, 0.3);
-}
-
 body {
   font-family: 'Montserrat', sans-serif;
   color: white;
@@ -42,12 +27,12 @@ body {
   max-width: 1300px;
   width: 100%;
   margin: 0 auto;
-  background: linear-gradient(135deg, 
-  #1730b9,    /* modrá 1 */
-  #0f0850,    /* tmavě fialová */
-  #05071a,    /* velmi tmavá modrá */
-  #23043d     /* temná fialová */
-);
+  background: linear-gradient(135deg,
+    #1730b9,
+    #0f0850,
+    #05071a,
+    #23043d
+  );
   background-size: cover;
   background-position: center;
   box-shadow: 0 0 155px rgba(46, 60, 255, 0.74);
@@ -60,18 +45,18 @@ body {
   z-index: 1;
   color: white;
 }
-  
+
+/* Hlavička */
 #hero-header {
   background: linear-gradient(to bottom, #19258f85, #c82bf800);
   color: #131628;
   padding: 25px 0;
   transition: transform 0.3s ease;
   display: flex;
-  opacity: 1;
   position: sticky;
   top: 0;
   z-index: 999;
-  justify-content:space-between; /* logo vlevo, tlačítko vpravo */
+  justify-content: space-between;
 }
 
 .header-content {
@@ -94,15 +79,7 @@ body {
   opacity: 0.7;
 }
 
-.logo-scroll {
-  font-size: 2rem;
-  font-family: 'Great Vibes', cursive;
-  color: #000000;
-  height: 3rem;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
+/* Navigace */
 nav {
   display: flex;
   justify-content: center;
@@ -158,27 +135,23 @@ nav a:hover::before {
   transform: translateX(100%) rotate(25deg);
 }
 
-/* Efekt zvětšení na desktopu */
 @media (min-width: 768px) {
   nav:hover a {
     flex: 0.8;
   }
-
   nav a:hover {
     flex: 2;
     background: rgba(0, 224, 255, 0.1);
     color: #00e0ff;
-    box-shadow: 0px 0px 0px #490652;
+    box-shadow: 0 0 0 #490652;
   }
 }
 
-/* Zmenšení pro malé obrazovky */
 @media (max-width: 600px) {
   nav {
     gap: 10px;
     padding: 5px 5px 15px;
   }
-
   nav a {
     padding: 6px 4px;
     font-size: 1rem;
@@ -186,24 +159,15 @@ nav a:hover::before {
   }
 }
 
-/* Zvýraznění pro větší zařízení */
 @media (min-width: 800px) {
   nav a {
     font-size: 1.8rem;
   }
 }
 
-
 .section {
   padding: 5px 20px;
-  padding-bottom: 25px;
-}
-
-@media (max-width: 600px) {
-  .section #uvitani {
-    padding: 0px; /* menší odsazení */
-    padding-bottom: 15px;
-  }
+  padding-bottom: 5px;
 }
 
 .section h2 {
@@ -223,12 +187,12 @@ nav a:hover::before {
   .section p {
     font-size: 1em;
   }
-
   .section h2 {
     font-size: 4em;
   }
 }
 
+/* Tlacitka */
 .tlacitko {
   display: inline-block;
   padding: 12px 28px;
@@ -251,9 +215,9 @@ nav a:hover::before {
 }
 
 #tlacitko-header {
-  display:flex;              /* ← aby text a ikonka byly vedle sebe */
-  align-items:center;
-  gap:8px;                   /* mezera mezi textem a ikonou */
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-size: 1.1rem;
   padding: 10px;
   margin-right: 40px;
@@ -274,36 +238,23 @@ nav a:hover::before {
 
 #tlacitko-header:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(108, 111, 255, 0.699);
+  box-shadow: 0 0 15px rgba(108, 111, 255, 0.7);
 }
 
-#tlacitko-header img{
-  width:20px; height:20px;   /* sjednocená velikost ikony */
+#tlacitko-header img {
+  width: 20px;
+  height: 20px;
 }
 
-#tlacitko-uvitani {
-  margin-bottom: 5vw;
-  font-size: 1.5rem;
-}
-
-@media (max-width: 600px) {
-  .tlacitko {
-    display: block;
-    padding: 14px 0;
-    font-size: 1rem;
-  }
-}
-
-/*footer*/
-
+/* Paticka stránky */
 footer {
   background: linear-gradient(135deg, #0b096e, #040333);
-  padding: 30px 15px; /* trošku menší padding */
+  padding: 30px 15px;
   text-align: center;
 }
 
 footer h2.footer-title {
-  font-size: 2.2em; /* lehce menší */
+  font-size: 2.2em;
   margin-bottom: 10px;
   text-shadow: none;
 }
@@ -317,15 +268,15 @@ footer p {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 15px; /* menší mezera */
+  gap: 15px;
   margin: 20px auto;
   width: 95%;
-  max-width: 900px; /* umožní trochu širší footer */
+  max-width: 900px;
   overflow: hidden;
 }
 
 .social-box {
-  flex: 1 1 70px; /* užší základ */
+  flex: 1 1 70px;
   max-width: 80px;
   min-width: 50px;
   aspect-ratio: 1;
@@ -372,36 +323,29 @@ footer p {
   font-size: 0.7rem;
 }
 
-/* Na mobilech */
 @media (max-width: 600px) {
   footer {
     padding: 15px 10px;
   }
-
   footer h2.footer-title {
     font-size: 1.5em;
   }
-
   footer p {
     font-size: 1em;
   }
-
   .social-links {
     gap: 8px;
     max-width: 100%;
   }
-
   .social-box {
     width: 20vw;
     min-width: 40px;
     max-width: 60px;
   }
-
   .social-box .front img {
     max-width: 50%;
     max-height: 50%;
   }
-
   .social-box .back {
     font-size: 0.5rem;
   }
