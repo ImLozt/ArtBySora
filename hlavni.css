@@ -31,23 +31,22 @@ body {
   width: 100%;
   margin: 0 auto;
   background-color: #23282c;
-
   background-size: cover;
   background-position: center;
   box-shadow: 0 0 155px rgba(40, 48, 168, 0.74);
 }
 
+/* Hlavička */
 #hero-header {
   background: linear-gradient(to bottom, #19258f85, #c82bf800);
   color: #131628;
   padding: 20px 0;
   transition: transform 0.3s ease;
   display: flex;
-  opacity: 1;
   position: sticky;
   top: 0;
   z-index: 999;
-  justify-content:space-between; /* logo vlevo, tlačítko vpravo */
+  justify-content: space-between;
 }
 
 .header-content {
@@ -60,22 +59,24 @@ body {
   transform: translateY(-100%);
 }
 
+/* Logo v hlavičce */
 .logo-link {
   color: #ffffff;
   transition: all 0.3s ease;
   padding: 3px;
-  display: inline-block; /* nebo block/flex */
+  display: inline-block;
 }
 
 .logo-link:hover {
   opacity: 0.7;
 }
 
+/* Navigace */
 nav {
   display: flex;
   gap: 10px;
   overflow: hidden;
-  padding: 5px 5px 50px;    /* spodní odsazení může zůstat */
+  padding: 5px 5px 50px;
   margin-top: 15vw;
 }
 
@@ -92,7 +93,7 @@ nav a {
     #318affa2,
     #3634dbb9
   );
-  color: rgb(255, 255, 255);
+  color: #fff;
   font-size: 1.5rem;
   transition: all 0.3s ease;
   font-family: 'Bebas Neue', sans-serif;
@@ -132,9 +133,8 @@ nav a:hover::before {
     flex: 2;
     background: rgba(0, 224, 255, 0.1);
     color: #00e0ff;
-    box-shadow: 0px 0px 0px #490652;
+    box-shadow: 0 0 0 #490652;
   }
-
 
   nav a {
     font-size: 2rem;
@@ -142,7 +142,7 @@ nav a:hover::before {
   }
 
   nav {
-    padding: 20px 20px 20px;
+    padding: 20px 20px;
     gap: 50px;
   }
 }
@@ -151,43 +151,45 @@ nav a:hover::before {
   padding: 40px 20px;
 }
 
+/* Barevná pozadí sekcí */
 #omne {
   background: linear-gradient(to bottom, #1730b9, #0f0850);
 }
 
 #kresby {
-  background: linear-gradient(to bottom, #0f0850, #05071a, #05071a);
+  background: linear-gradient(to bottom, #0f0850, #05071a);
 }
 
 #videa {
-  background: linear-gradient(to bottom, #05071a, #05071a, #350833);
+  background: linear-gradient(to bottom, #05071a, #350833);
 }
 
+/* Úvodní sekce */
 #uvitani {
   min-height: calc(100vh - var(--header-h));
+  display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 20px;              
+  padding: 20px;
   position: relative;
   overflow: hidden;
   z-index: 1;
+  margin-top: -110px;
   color: white;
-  display: flex;
-  margin-top: -110px;  
 }
 
 .uvitani-bg {
-  position:absolute;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   opacity: 0;
   transition: opacity 2s ease-in-out;
   z-index: -2;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
 .uvitani-bg.active {
@@ -205,6 +207,7 @@ nav a:hover::before {
   z-index: -1;
 }
 
+/* Nadpisy a odstavce v sekci */
 .section h2 {
   margin: 20px;
   text-align: left;
@@ -227,18 +230,18 @@ nav a:hover::before {
   }
 }
 
-/* --- efektní najíždění obrázků --- */
-.lazy{
-  opacity:0;
-  transform:translateY(40px);
-  transition:opacity .8s ease-out, transform .8s ease-out;
-}
-  
-.lazy.show{          /* přidá JS → spustí animaci */
-  opacity:1;
-  transform:translateY(0);
+.lazy {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity .8s ease-out, transform .8s ease-out;
 }
 
+.lazy.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Karty */
 .card {
   background: linear-gradient(to right, #4b074bc2, #0a034ea2);
   margin: 0 auto;
@@ -247,23 +250,23 @@ nav a:hover::before {
   max-width: 350px;
   flex: 1 1 300px;
   overflow: hidden;
-  position: relative;      
+  position: relative;
   cursor: pointer;
-  box-shadow: 0px 0px 20px #0f0000ab;
+  box-shadow: 0 0 20px #0f0000ab;
 }
 
 .card::before {
   content: "";
   position: absolute;
-  inset: 0;                        
+  inset: 0;
   background: linear-gradient(
     135deg,
     rgba(56, 91, 245, 0.404) 0%,
     rgba(255, 255, 255, 0.045) 35%,
     rgba(255, 53, 97, 0.123) 60%
   );
-  mix-blend-mode: screen;            
-  pointer-events: none;                
+  mix-blend-mode: screen;
+  pointer-events: none;
   transition: opacity .3s ease;
 }
 
@@ -271,19 +274,17 @@ nav a:hover::before {
   margin: 0 10px 6px;
   padding: 8px;
   font-size: 1.5em;
-  position: relative;     
-  padding-right: 1.2em; 
+  position: relative;
+  padding-right: 1.2em;
 }
 
 .card p::after {
-  content: "»";               
+  content: "»";
   position: absolute;
-  right: 10px;         
+  right: 10px;
   top: 40%;
   transform: translateY(-50%);
-  font-size: 1.2em;   
-  color: inherit;         
-  font-size: 2em; 
+  font-size: 2em;
 }
 
 .card:hover {
@@ -292,10 +293,11 @@ nav a:hover::before {
   box-shadow: 0 0 20px rgba(9, 206, 255, 0.842);
 }
 
-.card:hover::before {                    
+.card:hover::before {
   opacity: 0;
 }
 
+/* Galerie obrázků */
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -314,42 +316,32 @@ nav a:hover::before {
   border-top-right-radius: 10px;
 }
 
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 40px;
-  margin: 20px;
-  justify-items: center;
-  padding: 0 20px;
-}
-
+/* Responzivní galerie */
 @media (max-width: 768px) {
   .gallery {
-    grid-template-columns: repeat(2, 1fr); /* 2 sloupce */
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
     padding: 0 10px;
   }
 
   .card {
     max-width: 100%;
-    margin: 0 auto;
   }
 
   .gallery img {
-    height: 300px; /* aby obrázky nebyly moc vysoké na mobilech */
     width: 300px;
-    justify-content: center;
+    height: 300px;
   }
 
   .card p {
-    font-size: 1.2em;
+    font-size: 1em;
     padding: 6px;
   }
 }
 
 @media (max-width: 480px) {
   .gallery {
-    grid-template-columns: 1fr; /* Na velmi malých mobilech pod sebe */
+    grid-template-columns: 1fr;
     gap: 15px;
   }
 
@@ -358,11 +350,11 @@ nav a:hover::before {
   }
 
   .card p {
-    font-size: 1em;
+    font-size: 0.8em;
   }
 }
 
-
+/* Fullscreen overlay */
 .fullscreen-overlay {
   position: fixed;
   top: 0;
@@ -373,29 +365,26 @@ nav a:hover::before {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 9999;
   flex-direction: column;
   padding: 20px;
   box-sizing: border-box;
+  z-index: 9999;
   opacity: 0;
   animation: fadeOverlay 0.3s ease-out forwards;
 }
 
 @keyframes fadeOverlay {
-  to {
-    opacity: 1;
-  }
+  to { opacity: 1; }
 }
 
 .fullscreen-overlay img,
 .fullscreen-overlay video {
-  width: auto;
   max-width: 90vw;
   max-height: 80vh;
   object-fit: contain;
   border-radius: 12px;
-  animation: zoomImage 0.4s ease-out forwards;
   transform: scale(0.8);
+  animation: zoomImage 0.4s ease-out forwards;
 }
 
 @keyframes zoomImage {
@@ -422,20 +411,17 @@ nav a:hover::before {
   cursor: pointer;
 }
 
+/* Sekce videí */
 .video {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 30px;
-  justify-items: center; /* centrování každé karty */
+  justify-items: center;
   padding: 0 20px;
 }
 
 .video .card {
-  background: linear-gradient(
-    to right,
-    #4b074bc2,
-    #0a034ea2
-  );
+  background: linear-gradient(to right, #4b074bc2, #0a034ea2);
   transition: transform 0.3s;
   width: 100%;
   max-width: 450px;
@@ -449,9 +435,7 @@ nav a:hover::before {
 }
 
 .video .card p {
-  margin-left: 10px;
-  margin-top: 6px;
-  margin-bottom: 6px;
+  margin: 6px 10px;
   padding: 8px;
   font-size: 1.5em;
 }
@@ -469,69 +453,44 @@ nav a:hover::before {
   pointer-events: none;
 }
 
+/* Responzivní videa */
 @media (max-width: 768px) {
   .video {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* menší videa */
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 20px;
     padding: 0 10px;
   }
-
   .video .card {
     max-width: 280px;
     margin: 10px;
   }
-
   .preview-video {
-    height: auto;
     max-height: 300px;
   }
-
   .video .card p {
-    font-size: 1.2em;
+    font-size: 0.9em;
     padding: 6px;
   }
 }
 
 @media (max-width: 480px) {
   .video {
-    grid-template-columns: 1fr; /* na mobilech úplně pod sebe */
+    grid-template-columns: 1fr;
     gap: 15px;
   }
-
   .video .card {
     max-width: 90%;
     margin: 0 auto;
   }
-
   .video .card p {
-    font-size: 1em;
+    font-size: 0.8em;
   }
-
   .preview-video {
-    max-height: 200px; /* aby nebyla videa na mobilech moc vysoká */
+    max-height: 200px;
   }
 }
 
-
-.sound-toggle {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  padding: 6px 8px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background 0.3s;
-  z-index: 2;
-}
-
-.sound-toggle:hover {
-  background: rgba(0, 0, 0, 0.8);
-}
-
+/* Tlačítka */
 .tlacitko {
   display: inline-block;
   padding: 12px 28px;
@@ -549,25 +508,20 @@ nav a:hover::before {
 }
 
 .tlacitko:hover {
-  transform: scale(1.05);
+  transform: scale(1.05);  
   box-shadow: 0 0 15px rgba(0, 224, 255, 0.5);
 }
 
 #tlacitko-header {
-  display:flex;              /* ← aby text a ikonka byly vedle sebe */
-  align-items:center;
-  gap:8px;                   /* mezera mezi textem a ikonou */
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-size: 1.1rem;
   padding: 10px;
   margin-right: 40px;
   font-weight: bold;
   color: #ffffff;
-  background: linear-gradient(
-    to right,
-    #4447fdd5,
-    #318affa2,
-    #3634dbb9
-  );
+  background: linear-gradient(to right, #4447fdd5, #318affa2, #3634dbb9);
   border: none;
   border-radius: 8px;
   text-align: center;
@@ -580,14 +534,15 @@ nav a:hover::before {
   box-shadow: 0 0 15px rgba(108, 111, 255, 0.699);
 }
 
-#tlacitko-header img{
-  width:20px; height:20px;   /* sjednocená velikost ikony */
+#tlacitko-header img {
+  width: 20px;
+  height: 20px;
 }
 
 #tlacitko-uvitani {
-  margin: 5vw auto 0 auto;    /* nahoře 5vw, horizontálně auto = centrování */
+  margin: 5vw auto 0 auto;
   font-size: 1.5rem;
-  max-width: 500px;           /* nepřesáhne šířku ani na mobilu */
+  max-width: 500px;
   text-align: center;
   margin-bottom: 3vw;
 }
@@ -598,24 +553,21 @@ nav a:hover::before {
     padding: 14px 0;
     font-size: 1rem;
   }
-
   #tlacitko-uvitani {
-    display: block;
     padding: 10px 8px;
     font-size: 1rem;
   }
 }
 
-/*footer*/
-
+/* Paticka stránky */
 footer {
   background: linear-gradient(135deg, #0b096e, #040333);
-  padding: 30px 15px; /* trošku menší padding */
+  padding: 30px 15px;
   text-align: center;
 }
 
 footer h2.footer-title {
-  font-size: 2.2em; /* lehce menší */
+  font-size: 2.2em;
   margin-bottom: 10px;
   text-shadow: none;
 }
@@ -629,15 +581,15 @@ footer p {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 15px; /* menší mezera */
+  gap: 15px;
   margin: 20px auto;
   width: 95%;
-  max-width: 900px; /* umožní trochu širší footer */
+  max-width: 900px;
   overflow: hidden;
 }
 
 .social-box {
-  flex: 1 1 70px; /* užší základ */
+  flex: 1 1 70px;
   max-width: 80px;
   min-width: 50px;
   aspect-ratio: 1;
@@ -661,7 +613,7 @@ footer p {
 .social-box .back {
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 100%;  
   backface-visibility: hidden;
   display: flex;
   align-items: center;
@@ -679,47 +631,12 @@ footer p {
 }
 
 .social-box .back {
-  color: #ffffff;
+  color: #fff;
   transform: rotateY(180deg);
   font-size: 0.7rem;
 }
 
-/* Na mobilech */
-@media (max-width: 600px) {
-  footer {
-    padding: 15px 10px;
-  }
-
-  footer h2.footer-title {
-    font-size: 1.5em;
-  }
-
-  footer p {
-    font-size: 1em;
-  }
-
-  .social-links {
-    gap: 8px;
-    max-width: 100%;
-  }
-
-  .social-box {
-    width: 20vw;
-    min-width: 40px;
-    max-width: 60px;
-  }
-
-  .social-box .front img {
-    max-width: 50%;
-    max-height: 50%;
-  }
-
-  .social-box .back {
-    font-size: 0.5rem;
-  }
-}
-
-
+/* Kontaktovací sekce */
 .kontakt-section {
   background: linear-gradient(to bottom, #350833, #23043d);
   color: white;
@@ -727,7 +644,7 @@ footer p {
   text-align: center;
 }
 
-.kontakt-section h2 {   /*vyresit*/
+.kontakt-section h2 {
   text-align: center;
 }
 
@@ -769,18 +686,19 @@ footer p {
   opacity: 1;
 }
 
+/* Úvodní text (typewriter) */
 #zacatek {
   font-size: 1.5em;
   margin-top: 10vh;
 }
 
-/* Na menších telefonech */
 @media (max-width: 768px) {
   #zacatek {
     font-size: 1em;
   }
 }
 
+/* Efekt psacího stroje */
 .typewriter {
   display: inline-block;
   padding-left: 3px;
@@ -798,10 +716,10 @@ footer p {
   top: 0;
   width: 10px;
   height: 100%;
-  background-color: rgb(255, 255, 255);
+  background-color: #fff;
   animation: blink-caret 0.75s step-end 5 3.5s,
              fade-out 0.5s ease forwards;
-  animation-delay: 3.5s, 7.25s; /* první blikání po dopsání, fade out po blikání */
+  animation-delay: 3.5s, 7.25s;
 }
 
 @keyframes typing {
@@ -810,7 +728,7 @@ footer p {
 }
 
 @keyframes blink-caret {
-  0%, 100% { opacity: 0; }
+  0%,100% { opacity: 0; }
   50% { opacity: 1; }
 }
 
@@ -818,15 +736,13 @@ footer p {
   to { opacity: 0; }
 }
 
-/* Pro malé obrazovky vypneme nowrap a overflow */
 @media (max-width: 1200px) {
   .typewriter {
     white-space: normal;
     overflow: visible;
-    animation: none; /* Nebo zkrácená verze bez efektu */
+    animation: none;
   }
-
   .typewriter::after {
-    display: none; /* schováme kurzor */
+    display: none;
   }
 }
