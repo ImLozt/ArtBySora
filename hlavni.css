@@ -1,832 +1,187 @@
-html {
-  scroll-behavior: smooth;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  text-decoration: none;
-}
-
-h1 {
-  font-family: 'Great Vibes', cursive;
-}
-
-h2 {
-  font-family: 'Bebas Neue', sans-serif;
-  text-shadow: 7px 0px 10px #3c3fff;
-}
-
-body {
-  font-family: 'Montserrat', sans-serif;
-  color: white;
-  line-height: 1.6;
-  background-image: url('obrazky/pozadiwebu2.webp');
-  background-size: contain;
-}
-
-.container {
-  max-width: 1300px;
-  width: 100%;
-  margin: 0 auto;
-  background-color: #23282c;
-
-  background-size: cover;
-  background-position: center;
-  box-shadow: 0 0 155px rgba(40, 48, 168, 0.74);
-}
-
-#hero-header {
-  background: linear-gradient(to bottom, #19258f85, #c82bf800);
-  color: #131628;
-  padding: 20px 0;
-  transition: transform 0.3s ease;
-  display: flex;
-  opacity: 1;
-  position: sticky;
-  top: 0;
-  z-index: 999;
-  justify-content:space-between; /* logo vlevo, tlačítko vpravo */
-}
-
-.header-content {
-  padding: 0 40px;
-  display: flex;
-  transition: all 0.6s ease;
-}
-
-#hero-header.hidden {
-  transform: translateY(-100%);
-}
-
-.logo-link {
-  color: #ffffff;
-  transition: all 0.3s ease;
-  padding: 3px;
-  display: inline-block; /* nebo block/flex */
-}
-
-.logo-link:hover {
-  opacity: 0.7;
-}
-
-nav {
-  display: flex;
-  gap: 10px;
-  overflow: hidden;
-  padding: 5px 5px 50px;    /* spodní odsazení může zůstat */
-  margin-top: 15vw;
-}
-
-nav a {
-  position: relative;
-  overflow: hidden;
-  display: inline-block;
-  flex: 1;
-  text-align: center;
-  padding: 20px 0;
-  background: linear-gradient(
-    to right,
-    #4447fdd5,
-    #318affa2,
-    #3634dbb9
-  );
-  color: rgb(255, 255, 255);
-  font-size: 1.5rem;
-  transition: all 0.3s ease;
-  font-family: 'Bebas Neue', sans-serif;
-  border: none;
-  border-radius: 20px;
-  box-shadow: 0px 2px 12px #250344;
-}
-
-nav a::before {
-  content: '';
-  position: absolute;
-  top: -120%;
-  left: -50%;
-  width: 180%;
-  height: 500%;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(255, 255, 255, 0.5),
-    transparent
-  );
-  transform: translateX(-100%) rotate(20deg);
-  transition: transform 0.5s ease;
-  pointer-events: none;
-}
-
-nav a:hover::before {
-  transform: translateX(100%) rotate(25deg);
-}
-
-@media (min-width: 768px) {
-  nav:hover a {
-    flex: 0.8;
-  }
-
-  nav a:hover {
-    flex: 2;
-    background: rgba(0, 224, 255, 0.1);
-    color: #00e0ff;
-    box-shadow: 0px 0px 0px #490652;
-  }
-
-
-  nav a {
-    font-size: 2rem;
-    padding: 3vw 0;
-  }
-
-  nav {
-    padding: 20px 20px 20px;
-    gap: 50px;
-  }
-}
-
-.section {
-  padding: 40px 20px;
-}
-
-#omne {
-  background: linear-gradient(to bottom, #1730b9, #0f0850);
-}
-
-#kresby {
-  background: linear-gradient(to bottom, #0f0850, #05071a, #05071a);
-}
-
-#videa {
-  background: linear-gradient(to bottom, #05071a, #05071a, #350833);
-}
-
-#uvitani {
-  min-height: calc(100vh - var(--header-h));
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 20px;              
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  color: white;
-  display: flex;
-  margin-top: -110px;  
-}
-
-.uvitani-bg {
-  position:absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  opacity: 0;
-  transition: opacity 2s ease-in-out;
-  z-index: -2;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.uvitani-bg.active {
-  opacity: 1;
-}
-
-#uvitani::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom, #0f085000, #3a17b988);
-  z-index: -1;
-}
-
-.section h2 {
-  margin: 20px;
-  text-align: left;
-  font-size: 5em;
-}
-
-.section p {
-  margin: 10px;
-  padding: 10px;
-  font-size: 1.5em;
-}
-
-@media (max-width: 768px) {
-  .section p {
-    font-size: 1em;
-  }
-
-  .section h2 {
-    font-size: 4em;
-  }
-}
-
-/* --- efektní najíždění obrázků --- */
-.lazy{
-  opacity:0;
-  transform:translateY(40px);
-  transition:opacity .8s ease-out, transform .8s ease-out;
-}
-  
-.lazy.show{          /* přidá JS → spustí animaci */
-  opacity:1;
-  transform:translateY(0);
-}
-
-.card {
-  background: linear-gradient(to right, #4b074bc2, #0a034ea2);
-  margin: 0 auto;
-  border-radius: 15px;
-  transition: transform 0.3s ease;
-  max-width: 350px;
-  flex: 1 1 300px;
-  overflow: hidden;
-  position: relative;      
-  cursor: pointer;
-  box-shadow: 0px 0px 20px #0f0000ab;
-}
-
-.card::before {
-  content: "";
-  position: absolute;
-  inset: 0;                        
-  background: linear-gradient(
-    135deg,
-    rgba(56, 91, 245, 0.404) 0%,
-    rgba(255, 255, 255, 0.045) 35%,
-    rgba(255, 53, 97, 0.123) 60%
-  );
-  mix-blend-mode: screen;            
-  pointer-events: none;                
-  transition: opacity .3s ease;
-}
-
-.card p {
-  margin: 0 10px 6px;
-  padding: 8px;
-  font-size: 1.5em;
-  position: relative;     
-  padding-right: 1.2em; 
-}
-
-.card p::after {
-  content: "»";               
-  position: absolute;
-  right: 10px;         
-  top: 40%;
-  transform: translateY(-50%);
-  font-size: 1.2em;   
-  color: inherit;         
-  font-size: 2em; 
-}
-
-.card:hover {
-  transform: scale(1.05);
-  z-index: 2;
-  box-shadow: 0 0 20px rgba(9, 206, 255, 0.842);
-}
-
-.card:hover::before {                    
-  opacity: 0;
-}
-
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 40px;
-  margin: 20px;
-  justify-items: center;
-  padding: 0 20px;
-}
-
-.gallery img {
-  width: 100%;
-  height: 500px;
-  object-fit: cover;
-  transition: transform 0.3s ease, object-fit 0.3s ease;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 40px;
-  margin: 20px;
-  justify-items: center;
-  padding: 0 20px;
-}
-
-@media (max-width: 768px) {
-  .gallery {
-    grid-template-columns: repeat(2, 1fr); /* 2 sloupce */
-    gap: 20px;
-    padding: 0 10px;
-  }
-
-  .card {
-    max-width: 100%;
-    margin: 0 auto;
-  }
-
-  .gallery img {
-    height: 300px; /* aby obrázky nebyly moc vysoké na mobilech */
-    width: 300px;
-    justify-content: center;
-  }
-
-  .card p {
-    font-size: 1.2em;
-    padding: 6px;
-  }
-}
-
-@media (max-width: 480px) {
-  .gallery {
-    grid-template-columns: 1fr; /* Na velmi malých mobilech pod sebe */
-    gap: 15px;
-  }
-
-  .gallery img {
-    height: 250px;
-  }
-
-  .card p {
-    font-size: 1em;
-  }
-}
-
-
-.fullscreen-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.9);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  flex-direction: column;
-  padding: 20px;
-  box-sizing: border-box;
-  opacity: 0;
-  animation: fadeOverlay 0.3s ease-out forwards;
-}
-
-@keyframes fadeOverlay {
-  to {
-    opacity: 1;
-  }
-}
-
-.fullscreen-overlay img,
-.fullscreen-overlay video {
-  width: auto;
-  max-width: 90vw;
-  max-height: 80vh;
-  object-fit: contain;
-  border-radius: 12px;
-  animation: zoomImage 0.4s ease-out forwards;
-  transform: scale(0.8);
-}
-
-@keyframes zoomImage {
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.fullscreen-overlay p {
-  color: white;
-  margin-top: 20px;
-  font-size: 1.2rem;
-  text-align: center;
-}
-
-.fullscreen-overlay::after {
-  content: '✖';
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 2rem;
-  color: white;
-  cursor: pointer;
-}
-
-.video {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 30px;
-  justify-items: center; /* centrování každé karty */
-  padding: 0 20px;
-}
-
-.video .card {
-  background: linear-gradient(
-    to right,
-    #4b074bc2,
-    #0a034ea2
-  );
-  transition: transform 0.3s;
-  width: 100%;
-  max-width: 450px;
-  position: relative;
-  overflow: hidden;
-  text-align: left;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  cursor: pointer;
-  margin: 20px;
-}
-
-.video .card p {
-  margin-left: 10px;
-  margin-top: 6px;
-  margin-bottom: 6px;
-  padding: 8px;
-  font-size: 1.5em;
-}
-
-.video .card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(0, 224, 255, 0.5);
-}
-
-.preview-video {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  display: block;
-  pointer-events: none;
-}
-
-@media (max-width: 768px) {
-  .video {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* menší videa */
-    gap: 20px;
-    padding: 0 10px;
-  }
-
-  .video .card {
-    max-width: 280px;
-    margin: 10px;
-  }
-
-  .preview-video {
-    height: auto;
-    max-height: 300px;
-  }
-
-  .video .card p {
-    font-size: 1.2em;
-    padding: 6px;
-  }
-}
-
-@media (max-width: 480px) {
-  .video {
-    grid-template-columns: 1fr; /* na mobilech úplně pod sebe */
-    gap: 15px;
-  }
-
-  .video .card {
-    max-width: 90%;
-    margin: 0 auto;
-  }
-
-  .video .card p {
-    font-size: 1em;
-  }
-
-  .preview-video {
-    max-height: 200px; /* aby nebyla videa na mobilech moc vysoká */
-  }
-}
-
-
-.sound-toggle {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  padding: 6px 8px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background 0.3s;
-  z-index: 2;
-}
-
-.sound-toggle:hover {
-  background: rgba(0, 0, 0, 0.8);
-}
-
-.tlacitko {
-  display: inline-block;
-  padding: 12px 28px;
-  margin: 20px;
-  margin-top: 50px;
-  font-size: 1.1rem;
-  font-weight: bold;
-  color: #23282c;
-  background: linear-gradient(135deg, #00e0ff, #42ccfe);
-  border: none;
-  border-radius: 8px;
-  text-align: center;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0, 224, 255, 0.3);
-}
-
-.tlacitko:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(0, 224, 255, 0.5);
-}
-
-#tlacitko-header {
-  display:flex;              /* ← aby text a ikonka byly vedle sebe */
-  align-items:center;
-  gap:8px;                   /* mezera mezi textem a ikonou */
-  font-size: 1.1rem;
-  padding: 10px;
-  margin-right: 40px;
-  font-weight: bold;
-  color: #ffffff;
-  background: linear-gradient(
-    to right,
-    #4447fdd5,
-    #318affa2,
-    #3634dbb9
-  );
-  border: none;
-  border-radius: 8px;
-  text-align: center;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(3, 5, 39, 0.3);
-}
-
-#tlacitko-header:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(108, 111, 255, 0.699);
-}
-
-#tlacitko-header img{
-  width:20px; height:20px;   /* sjednocená velikost ikony */
-}
-
-#tlacitko-uvitani {
-  margin: 5vw auto 0 auto;    /* nahoře 5vw, horizontálně auto = centrování */
-  font-size: 1.5rem;
-  max-width: 500px;           /* nepřesáhne šířku ani na mobilu */
-  text-align: center;
-  margin-bottom: 3vw;
-}
-
-@media (max-width: 600px) {
-  .tlacitko {
-    display: block;
-    padding: 14px 0;
-    font-size: 1rem;
-  }
-
-  #tlacitko-uvitani {
-    display: block;
-    padding: 10px 8px;
-    font-size: 1rem;
-  }
-}
-
-/*footer*/
-
-footer {
-  background: linear-gradient(135deg, #0b096e, #040333);
-  padding: 30px 15px; /* trošku menší padding */
-  text-align: center;
-}
-
-footer h2.footer-title {
-  font-size: 2.2em; /* lehce menší */
-  margin-bottom: 10px;
-  text-shadow: none;
-}
-
-footer p {
-  font-size: 1.3em;
-  margin: 0;
-}
-
-.social-links {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px; /* menší mezera */
-  margin: 20px auto;
-  width: 95%;
-  max-width: 900px; /* umožní trochu širší footer */
-  overflow: hidden;
-}
-
-.social-box {
-  flex: 1 1 70px; /* užší základ */
-  max-width: 80px;
-  min-width: 50px;
-  aspect-ratio: 1;
-  perspective: 600px;
-  text-decoration: none;
-}
-
-.social-box .box-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
-}
-
-.social-box:hover .box-inner {
-  transform: rotateY(180deg);
-}
-
-.social-box .front,
-.social-box .back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-}
-
-.social-box .front {
-  background: linear-gradient(135deg, #1e1d5e, #090799);
-}
-
-.social-box .front img {
-  max-width: 60%;
-  max-height: 60%;
-}
-
-.social-box .back {
-  color: #ffffff;
-  transform: rotateY(180deg);
-  font-size: 0.7rem;
-}
-
-/* Na mobilech */
-@media (max-width: 600px) {
-  footer {
-    padding: 15px 10px;
-  }
-
-  footer h2.footer-title {
-    font-size: 1.5em;
-  }
-
-  footer p {
-    font-size: 1em;
-  }
-
-  .social-links {
-    gap: 8px;
-    max-width: 100%;
-  }
-
-  .social-box {
-    width: 20vw;
-    min-width: 40px;
-    max-width: 60px;
-  }
-
-  .social-box .front img {
-    max-width: 50%;
-    max-height: 50%;
-  }
-
-  .social-box .back {
-    font-size: 0.5rem;
-  }
-}
-
-
-.kontakt-section {
-  background: linear-gradient(to bottom, #350833, #23043d);
-  color: white;
-  padding: 60px 20px;
-  text-align: center;
-}
-
-.kontakt-section h2 {   /*vyresit*/
-  text-align: center;
-}
-
-.kontakt-form {
-  max-width: 600px;
-  margin: 0 auto;
-  display: grid;
-  gap: 15px;
-}
-
-.kontakt-form label {
-  text-align: left;
-  font-size: 1.2rem;
-}
-
-.kontakt-form input,
-.kontakt-form textarea {
-  width: 100%;
-  padding: 12px;
-  border: none;
-  border-radius: 6px;
-  background: #23282c;
-  color: white;
-}
-
-.kontakt-form input:focus,
-.kontakt-form textarea:focus {
-  outline: 2px solid #00e0ff;
-}
-
-.form-status {
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  margin-top: 10px;
-  text-align: center;
-}
-
-.form-status.visible {
-  opacity: 1;
-}
-
-#zacatek {
-  font-size: 1.5em;
-  margin-top: 10vh;
-}
-
-/* Na menších telefonech */
-@media (max-width: 768px) {
-  #zacatek {
-    font-size: 1em;
-  }
-}
-
-.typewriter {
-  display: inline-block;
-  padding-left: 3px;
-  overflow: hidden;
-  position: relative;
-  white-space: nowrap;
-  letter-spacing: .02em;
-  animation: typing 3.5s steps(40, end) forwards;
-}
-
-.typewriter::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 10px;
-  height: 100%;
-  background-color: rgb(255, 255, 255);
-  animation: blink-caret 0.75s step-end 5 3.5s,
-             fade-out 0.5s ease forwards;
-  animation-delay: 3.5s, 7.25s; /* první blikání po dopsání, fade out po blikání */
-}
-
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
-}
-
-@keyframes blink-caret {
-  0%, 100% { opacity: 0; }
-  50% { opacity: 1; }
-}
-
-@keyframes fade-out {
-  to { opacity: 0; }
-}
-
-/* Pro malé obrazovky vypneme nowrap a overflow */
-@media (max-width: 1200px) {
-  .typewriter {
-    white-space: normal;
-    overflow: visible;
-    animation: none; /* Nebo zkrácená verze bez efektu */
-  }
-
-  .typewriter::after {
-    display: none; /* schováme kurzor */
-  }
-}
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtBySora</title>
+    <link rel="stylesheet" href="../css/hlavni.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="../obrazky/korunka1pfp.png" rel="icon" type="image/png\">
+</head>
+<body>
+
+    <div class="container">
+    
+      <header id="hero-header">
+        <div class="header-content">
+          <h1><a href="capek.html" class="logo-link">Art by Sora</a></h1>
+        </div>
+
+        <a href="https://www.instagram.com/artbysoracz" 
+        id="tlacitko-header" 
+        target="_blank"                >
+       <span>Napiš mi!</span>
+       <img src="obrazky/pngfind.com-instagram-png-white-2773517 (1).png" alt="Instagram" />
+        </a>
+
+      </header>
+
+      <section id="uvitani" class="section">
+
+        <h2><span class="typewriter" id="zacatek">Vítej ve světě mé tvorby!</span></h2>
+        <nav>
+          <a href="omne.html">O mně</a>
+          <a href="umeni.html">Kresby</a>
+          <a href="esport.html">Edity</a>
+          <a href="kontakty.html">Socials</a>
+        </nav>
+
+        <a href="#omne" class="tlacitko" id="tlacitko-uvitani">Pokračuj níže do digitální galerie</a>
+
+        <div id="bg1" class="uvitani-bg"></div>
+        <div id="bg2" class="uvitani-bg"></div>
+      </section>
+
+      <section id="omne" class="section">
+        <h2>Něco o mně</h2>
+        <p>Zdravím tě,</p>
+        <p>jmenuji se Tomáš, ale na internetu mě najdeš spíš pod přezdívkou Sora.
+          Tvorbě se věnuji přes čtyři roky – nejprve jsem se zaměřil na kresbu a grafiku, později mě začalo bavit i video.
+          Mám rád vizuální vyprávění – ať už skrze postavu, střih, nebo kompozici.
+          Moje volné chvíle patří digitálnímu umění, psaní vlastního fantasy příběhu a sledování LEC – evropského League of Legends esportu...</p>
+          <a href="../stranky/omne.html" class="tlacitko">Číst dál</a>
+        </section>
+    
+      <section id="kresby" class="section">
+        <h2>Digitální kresby</h2>
+        <div class="gallery">
+          <div class="card lazy" loading="lazy">
+          <img src="../obrazky/kresby/Jinx_isha.webp" alt="Jinx_isha">
+          <p>Jinx a Isha</p>
+        </div>
+        <div class="card lazy" loading="lazy">
+          <img src="../obrazky/kresby/leblanc2.webp" alt="Leblanc">
+          <p>Leblanc</p>
+        </div>
+        <div class="card lazy" loading="lazy">
+          <img src="../obrazky/kresby/Návrhová plocha 4.webp" alt="Ahri">
+          <p>Ahri</p>
+        </div>
+        <div class="card lazy" loading="lazy">
+          <img src="../obrazky/kresby/sora_1_frame.webp" alt="Sora">
+          <p>Sora</p>
+        </div>
+        </div>
+        <a href="umeni.html" class="tlacitko">Zobrazit celou galerii</a>
+      </section>
+
+      <section id="videa" class="section">
+        <h2>Esportové edity</h2>
+        <div class="video" loading="lazy">
+          <div class="card video-box lazy">
+            <video class="preview-video" src="../videa/KCvsMKOI.mp4" muted loop preload="metadata"></video>
+            <p>KC vs MKOI</p>
+          </div>
+          <div class="card video-box lazy">
+            <video class="preview-video" src="../videa/JKL.mp4" muted loop preload="metadata"></video>
+            <p>Jackeylove Quadra</p>
+          </div>
+          <div class="card video-box lazy">
+            <video class="preview-video" src="../videa/NUCvsARROW.mp4" muted loop preload="metadata"></video>
+            <p>Nuc vs Arrow</p>
+          </div>
+        </div>
+        <a href="stranky/o-mne.html" class="tlacitko">Zobrazit všechna videa</a>
+      </section>
+    
+      <section id="kontakt" class="section kontakt-section">
+        <h2>Kontaktuj mě</h2>
+        <form
+          id="contact-form"
+          class="kontakt-form"
+          action="https://formspree.io/f/mkgrgqzg"
+          method="POST"
+        >
+          <input type="hidden" name="_subject" value="Nová zpráva z webu Art by Sora">
+
+          <input type="hidden" name="_cc" value="tomsadska@seznam.cz">
+      
+          <label for="name">Jméno</label>
+          <input type="text" id="name" name="name" required />
+      
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="_replyto" required />
+      
+          <label for="message">Zpráva</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+      
+          <button type="submit" class="tlacitko">Odeslat</button>
+      
+          <p id="form-status" class="form-status"></p>
+        </form>
+      </section>       
+
+  <footer>
+    <h2 class="footer-title">Socials</h2>
+      <div class="social-links">
+        <a href="https://www.instagram.com/esportsbysora/" class="social-box instagram" target="_blank">
+          <div class="box-inner">
+            <div class="front">
+              <img src="../obrazky/pngfind.com-instagram-png-white-2773517 (1).png" alt="Instagram Logo">
+            </div>
+          <div class="back">
+              <span>@EsportsBySora</span>
+            </div>
+          </div>
+        </a>
+        <a href="https://www.youtube.com/@esportsbysora" class="social-box youtube" target="_blank">
+          <div class="box-inner">
+            <div class="front">
+              <img src="../obrazky/[CITYPNG.COM]HD White Youtube YT Logo Symbol Icon PNG - 2000x2000.png" alt="YouTube Logo">
+            </div>
+          <div class="back">
+              <span>@EsportsBySora</span>
+            </div>
+          </div>
+        </a>
+        <a href="https://www.tiktok.com/@gamingwithsora" class="social-box tiktok" target="_blank">
+          <div class="box-inner">
+            <div class="front">
+              <img src="../obrazky/pngaaa.com-4768645.png" alt="TikTok Logo">
+            </div>
+            <div class="back">
+              <span>@GamingWithSora</span>
+            </div>
+          </div>
+        </a>
+        <a href="mailto:@loztthoughts@gmail.com" class="social-box email">
+          <div class="box-inner">
+            <div class="front">
+              <img src="../obrazky/email-envelope-line-white-icon.png" alt="Email Logo">
+            </div>
+            <div class="back">
+              <span>Loztthoughts@gmail.com</span>
+            </div>
+          </div>
+        </a>
+        <a href="https://x.com/EditsBySora" class="social-box x">
+          <div class="box-inner">
+            <div class="front">
+              <img src="../obrazky/x-social-media-white-icon.png" alt="X Logo">
+            </div>
+            <div class="back">
+              <span>@EditsBySora</span>
+            </div>
+          </div>
+        </a>
+        </div>
+        
+  </footer>
+    </div>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script src="../script/hlavni.js"></script>
+
+</body>
+</html>
