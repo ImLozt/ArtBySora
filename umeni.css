@@ -488,3 +488,18 @@ footer p {
     font-size: 0.5rem;
   }
 }
+
+
+/* Zvýraznění prvku před načtením (nebo decentní tmavý odstín) */
+.lazy {
+  opacity: 0;                /* obrázek je na začátku neviditelný */
+  transition: opacity 0.4s ease-out;
+  /* Pokud chceš, můžeš dodat nějaké pozadí, aby neblikalo čistě bílo:
+  background-color: rgba(0, 0, 0, 0.2);
+  */
+}
+
+/* Jakmile je obrázek načtený, přidáme třídu 'loaded', aby se plynule objevil */
+.lazy.loaded {
+  opacity: 1;
+}
