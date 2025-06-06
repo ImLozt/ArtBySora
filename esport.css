@@ -228,6 +228,7 @@ nav a:hover::before {
   transform: translateY(-50%);
   font-size: 2em;
 }
+@media (hover: hover) and (pointer: fine) {
 .card:hover {
   transform: scale(1.05);
   z-index: 2;
@@ -235,6 +236,7 @@ nav a:hover::before {
 }
 .card:hover::before {
   opacity: 0;
+}
 }
 
 /* Videa */
