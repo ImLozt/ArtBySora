@@ -106,7 +106,7 @@ nav a::before {
   content: '';
   position: absolute;
   top: -120%;
-  left: -50%;
+  left: -80%;
   width: 180%;
   height: 500%;
   background: linear-gradient(
