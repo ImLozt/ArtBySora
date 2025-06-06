@@ -23,6 +23,12 @@ body {
   background-size: cover;
 }
 
+@media (max-width: 768px) {
+  body {
+    background-image: none;
+  }
+}
+
 .container {
   max-width: 1300px;
   width: 100%;
