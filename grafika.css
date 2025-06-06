@@ -243,14 +243,15 @@ nav a:hover::before {
   font-size: 2em;
 }
 
+@media (hover: hover) and (pointer: fine) {
 .card:hover {
   transform: scale(1.05);
   z-index: 2;
   box-shadow: 0 0 20px rgba(9, 206, 255, 0.842);
 }
-
 .card:hover::before {
   opacity: 0;
+}
 }
 
 .gallery {
