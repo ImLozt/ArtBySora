@@ -1,0 +1,604 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+h1 {
+  font-family: 'Great Vibes', cursive;
+  text-decoration: none;
+}
+
+h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  text-shadow: 7px 0p 10px #3c3fff;
+}
+
+h3 {
+  margin-bottom: 10px;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  line-height: 1.6;
+  background-image: url('obrazky/pozadiwebu2.webp');
+  background-size: contain;
+}
+
+.container {
+  max-width: 1300px;
+  width: 100%;
+  margin: 0 auto;
+  background: linear-gradient(135deg,
+    #1730b9,
+    #0f0850,
+    #05071a,
+    #350833,
+    #23043d
+  );
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 0 155px rgba(46, 60, 255, 0.74);
+}
+
+/* hlavicka */
+
+#hero-header {
+  background: linear-gradient(to bottom, #19258f85, #c82bf800);
+  color: #131628;
+  padding: 25px 0;
+  transition: transform 0.3s ease;
+  display: flex;
+  opacity: 1;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  justify-content: space-between;
+}
+
+.header-content {
+  padding: 0 40px;
+  display: flex;
+  transition: all 0.6s ease;
+}
+
+#hero-header.hidden {
+  transform: translateY(-100%);
+}
+
+.logo-link {
+  color: #ffffff;
+  transition: all 0.3s ease;
+  padding: 3px;
+}
+
+.logo-link:hover {
+  opacity: 0.7;
+}
+
+/* Navigace */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  overflow: hidden;
+  padding: 10px;
+  flex-wrap: nowrap;
+}
+
+nav a {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  text-align: center;
+  padding: 8px 10px;
+  font-size: 1.3rem;
+  background: linear-gradient(
+    to right,
+    #4447fdd5,
+    #318affa2,
+    #3634dbb9
+  );
+  color: rgb(255, 255, 255);
+  font-family: 'Bebas Neue', sans-serif;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0px 2px 12px #250344;
+  transition: all 0.3s ease;
+}
+
+nav a::before {
+  content: '';
+  position: absolute;
+  top: -110%;
+  left: -50%;
+  width: 180%;
+  height: 400%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.5),
+    transparent
+  );
+  transform: translateX(-100%) rotate(25deg);
+  transition: transform 0.5s ease;
+  pointer-events: none;
+}
+
+nav a:hover::before {
+  transform: translateX(100%) rotate(25deg);
+}
+
+@media (min-width: 768px) {
+  nav:hover a {
+    flex: 0.8;
+  }
+  nav a:hover {
+    flex: 2;
+    background: rgba(0, 224, 255, 0.1);
+    color: #00e0ff;
+    box-shadow: 0 0 0 #490652;
+  }
+}
+
+@media (max-width: 600px) {
+  nav {
+    gap: 10px;
+    padding: 5px 5px 15px;
+  }
+  nav a {
+    padding: 6px 4px;
+    font-size: 1rem;
+    border-radius: 12px;
+  }
+}
+
+@media (min-width: 800px) {
+  nav a {
+    font-size: 1.8rem;
+  }
+}
+
+.section {
+  padding: 5px 20px;
+  padding-bottom: 10px;
+}
+
+.section h2 {
+  margin: 20px;
+  text-align: left;
+  font-size: 5em;
+  margin-bottom: 20px;
+}
+
+.section p {
+  margin: 10px;
+  padding: 10px;
+  font-size: 1.5em;
+}
+
+@media (max-width: 768px) {
+  .section p {
+    font-size: 1em;
+  }
+  .section h2 {
+    font-size: 4em;
+  }
+}
+
+/* Karty */
+.card {
+  background: linear-gradient(to right, #4b074bc2, #0a034ea2);
+  margin: 0 auto;
+  border-radius: 15px;
+  transition: transform 0.3s ease;
+  max-width: 350px;
+  flex: 1 1 300px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 0 0 20px #0f0000ab;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(56, 91, 245, 0.404) 0%,
+    rgba(255, 255, 255, 0.045) 35%,
+    rgba(255, 53, 97, 0.123) 60%
+  );
+  mix-blend-mode: screen;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.card p {
+  margin: 0 10px 6px;
+  padding: 8px;
+  font-size: 1.5em;
+  position: relative;
+  padding-right: 1.2em;
+}
+
+.card p::after {
+  content: "»";
+  position: absolute;
+  right: 10px;
+  top: 40%;
+  transform: translateY(-50%);
+  font-size: 2em;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  z-index: 2;
+  box-shadow: 0 0 20px rgba(9, 206, 255, 0.842);
+}
+
+.card:hover::before {
+  opacity: 0;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  margin: 20px;
+  justify-items: center;
+  padding: 0 20px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  transition: transform 0.3s ease, object-fit 0.3s ease;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 0 10px;
+  }
+
+  .card {
+    max-width: 100%;
+  }
+
+  .gallery img {
+    width: 300px;
+    height: 300px;
+  }
+
+  .card p {
+    font-size: 1em;
+    padding: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .gallery img {
+    height: 250px;
+  }
+
+  .card p {
+    font-size: 0.8em;
+  }
+}
+
+/* Fullscreen */
+.fullscreen-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+  z-index: 9999;
+  opacity: 0;
+  animation: fadeOverlay 0.3s ease-out forwards;
+}
+
+@keyframes fadeOverlay {
+  to { opacity: 1; }
+}
+
+.fullscreen-overlay img,
+.fullscreen-overlay video {
+  max-width: 90vw;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 12px;
+  transform: scale(0.8);
+  animation: zoomImage 0.4s ease-out forwards;
+}
+
+@keyframes zoomImage {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.fullscreen-overlay p {
+  color: white;
+  margin-top: 20px;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.fullscreen-overlay::after {
+  content: '✖';
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+}
+
+/* SKRYJE DUPLIKÁTY v galerii */
+.card.hidden {
+  display: none;
+}
+
+/* ——— FULLSCREEN + MINI-THUMBNAILY ——— */
+
+/* Původní definice .fullscreen-overlay nech beze změny (animace, pozicování atd.) */
+.fullscreen-overlay {
+  /* …vaše existující styly… */
+  flex-direction: row;      /* hlavní obrázek + mini-náhledy vedle sebe */
+  align-items: center;
+  justify-content: center;
+  padding: 0;               /* odstraněno padding:20px, pokud jste ho přidávali */
+}
+
+/* Hlavní obrázek */
+#overlay-main-img {
+  max-width: 70vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+/* KONTEJNER PRO MINI-THUMBNAILY – bez scrollu a bez omezení výšky */
+#overlay-thumbs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-left: 15px;
+  /* odstraněno: max-height: 90vh; */
+  /* odstraněno: overflow-y: visible/auto/hidden; */
+}
+
+/* Jednotlivé mini-náhledy */
+#overlay-thumbs img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  transform-origin: center center;
+}
+
+/* Při najetí zvětšení, ale protože nemáme scroll ani pevnou výšku, nic se nevejde do boxu */
+#overlay-thumbs img:hover {
+  transform: scale(1.1);
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Křížek pro zavření overlaye */
+#overlay-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  z-index: 10001;
+}
+
+/* ——— RESPONZIVNÍ ÚPRAVY ——— */
+@media (max-width: 768px) {
+  .fullscreen-overlay {
+    flex-direction: column;    /* na mobilu mini-náhledy pod hlavním obrázkem */
+    padding: 20px;
+  }
+
+  #overlay-main-img {
+    max-width: 100vw;
+    max-height: 50vh;
+  }
+
+  /* Pro mobil: mini-náhledy dole vodorovně, bez scrollu */
+  #overlay-thumbs {
+    flex-direction: row;
+    margin-left: 0;
+    margin-top: 15px;
+    /* odstraněno: max-height: 80px; */
+    /* odstraněno: overflow-x: auto; */
+    flex-wrap: wrap;             /* pokud je mini-náhledů víc, zalome je na další řádek */
+    gap: 8px;
+  }
+
+  #overlay-thumbs img {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+
+
+#tlacitko-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.1rem;
+  padding: 10px;
+  margin-right: 40px;
+  font-weight: bold;
+  color: #ffffff;
+  background: linear-gradient(
+    to right,
+    #4447fdd5,
+    #318affa2,
+    #3634dbb9
+  );
+  border: none;
+  border-radius: 8px;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(3, 5, 39, 0.3);
+}
+
+#tlacitko-header:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(108, 111, 255, 0.699);
+}
+
+#tlacitko-header img {
+  width: 20px;
+  height: 20px;
+}
+
+/* Paticka */
+footer {
+  background: linear-gradient(135deg, #0b096e, #040333);
+  padding: 30px 15px;
+  text-align: center;
+}
+
+footer h2.footer-title {
+  font-size: 2.2em;
+  margin-bottom: 10px;
+  text-shadow: none;
+}
+
+footer p {
+  font-size: 1.3em;
+  margin: 0;
+}
+
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px auto;
+  width: 95%;
+  max-width: 900px;
+  overflow: hidden;
+}
+
+.social-box {
+  flex: 1 1 70px;
+  max-width: 80px;
+  min-width: 50px;
+  aspect-ratio: 1;
+  perspective: 600px;
+  text-decoration: none;
+}
+
+.social-box .box-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.social-box:hover .box-inner {
+  transform: rotateY(180deg);
+}
+
+.social-box .front,
+.social-box .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+.social-box .front {
+  background: linear-gradient(135deg, #1e1d5e, #090799);
+}
+
+.social-box .front img {
+  max-width: 60%;
+  max-height: 60%;
+}
+
+.social-box .back {
+  color: #ffffff;
+  transform: rotateY(180deg);
+  font-size: 0.7rem;
+}
+
+@media (max-width: 600px) {
+  footer {
+    padding: 15px 10px;
+  }
+  footer h2.footer-title {
+    font-size: 1.5em;
+  }
+  footer p {
+    font-size: 1em;
+  }
+  .social-links {
+    gap: 8px;
+    max-width: 100%;
+  }
+  .social-box {
+    width: 20vw;
+    min-width: 40px;
+    max-width: 60px;
+  }
+  .social-box .front img {
+    max-width: 50%;
+    max-height: 50%;
+  }
+  .social-box .back {
+    font-size: 0.5rem;
+  }
+}
+
+
+
+/* Zvýraznění prvku před načtením (nebo decentní tmavý odstín) */
+.lazy {
+  opacity: 0;                /* obrázek je na začátku neviditelný */
+  transition: opacity 0.4s ease-out;
+  /* Pokud chceš, můžeš dodat nějaké pozadí, aby neblikalo čistě bílo:
+  background-color: rgba(0, 0, 0, 0.2);
+  */
+}
+
+/* Jakmile je obrázek načtený, přidáme třídu 'loaded', aby se plynule objevil */
+.lazy.loaded {
+  opacity: 1;
+}
